@@ -1,5 +1,18 @@
-﻿extends layout
+﻿doctype html
+html
+  head
+    title my jade template
+    link(rel='stylesheet', href='http://lab.hakim.se/reveal-js/css/reveal.min.css' id=theme)
+    script(src="http://lab.hakim.se/reveal-js/js/reveal.min.js")
+  body
+    .reveal
+       .slides
+         section 
+           p Hello
+         section
+           p world
+         section
+           p test only
 
-block content
-  h1= title
-  p Welcome to #{title}
+script(type='text/javascript').
+  Reveal.initialize({ })
