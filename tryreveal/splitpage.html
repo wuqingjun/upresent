@@ -1,25 +1,32 @@
-﻿<!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml">
+﻿<!doctype html>
+<html>
 <head>
-    <title></title>
+    <style>
+        div.ex {
+            margin-top: 3vh;
+            margin-bottom: 3vh;
+            margin-right: 4vh;
+            margin-left: 4vh;
+        }
+    </style>
+
+    <meta charset="utf-8">
+    <title>Untitled Document</title>
+    <meta name="description" content="">
 </head>
 <body>
-    <div style="align-items:stretch">
-        <div style="width: 100px; background: chartreuse">
-            Area 1
+    <header id="top">
+        <div id="wrapper">
+            <img src="../../upresent/resource/line.png" width="55" height="55" alt="" />
+            <img src="../../upresent/resource/rect.png" width="55" height="55" alt="" />
         </div>
-        <div style="width: 150px; background: black">
-            Area 2
-        </div>
-
-        <div style="width: 650px; background: white">
-            Area 3
-        </div>
-        <div style="width: 150px; background: black">
-            Area 4
-
+    </header>
+    <div id="body" style="width: 100%; overflow:auto;height:100vh">
+        <div id="review" style="float:left; width: 10%; height:100vh"></div>
+        <div id="slide" style="float:right; width:90%; height:100vh;">
+            <div id="editarea" style="background-color:yellow;height:90vh" class="ex">here</div>
         </div>
     </div>
-
+    <div style="clear:both"></div>
 </body>
 </html>
