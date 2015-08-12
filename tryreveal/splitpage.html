@@ -1,6 +1,7 @@
 ﻿<!doctype html>
 <html>
 <head>
+    <link type="text/css" href="http://lab.hakim.se/reveal-js/css/reveal.min.css" rel="stylesheet" media="all">
     <style>
         div.edit {
             margin-top: 4vh;
@@ -8,6 +9,15 @@
             margin-right: 5vh;
             margin-left: 5vh;
         }
+        .parent img 
+        {
+            height: 100%;
+        }
+        div.button {
+    -moz-appearance:button; /* Firefox */
+    -webkit-appearance:button; /* Safari and Chrome */
+    appearance:button;
+    }
     </style>
 
     <meta charset="utf-8">
@@ -16,12 +26,10 @@
 </head>
 <body>
     <header id="top">
-        <div id="wrapper">
-            <div style="float:left; width:13%;"> <input id="filename" value="untitledfile" /> </div>
-            <div id="shapes" style="height:3vh">
-                <img src="/resource/line.png" width="25px" height="25px" alt="" />
-                <img src="/resource/rect.png" width="25px" height="25px" alt="" />
-            </div>
+        <div id="wrapper" style="height:50px">
+            <div style="float:left; margin-right:4px; margin-top:2px; margin-bottom:2px" class="parent"> <input id="filename" height="24" value="untitledfile" /> </div>
+            <div role="button" class="parent button sidebar-link" style="float:left; margin-right:1px;  margin-top:4px; margin-bottom:4px; height:24px;"><img src="/resource/line.png" onclick="drawLine();" style="margin-left:2px;margin-right:2px" /></div>
+            <div role="button" class="parent button sidebar-link" style="float:left; margin-right:1px;  margin-top:4px; margin-bottom:4px; height:24px;"><img src="/resource/rect.png" onclick="drawRectangle();" style="margin-left:2px;margin-right:2px" /></div>
         </div>
     </header>
     <div style="height:3px">
@@ -36,10 +44,37 @@
         </div>
         <div id="slide" style="float:right; width:90%; height:100vh; background-color:#F3F3F3;">
             <div id="editarea" style="height:90vh; background-color:white" class="edit">
-
+                <canvas id="current" style="width:100%; height:100%" ></canvas>
             </div>
         </div>
     </div>
     <div style="clear:both"></div>
+    <script type="text/javascript" src="http://lab.hakim.se/reveal-js/js/reveal.min.js"></script>
+    <script type="text/javascript">
+    Reveal.initialize({});
+    </script>
+    <script>
+        function drawLine() {
+            var canvas = document.getElementById('current');
+            var context = canvas.getContext('2d');
+            context.beginPath();
+            context.moveTo(0, 0);
+            context.lineTo(450, 50);
+            context.stroke();
+        }
+        function drawRectangle() {
+            var canvas = document.getElementById('current');
+            var context = canvas.getContext('2d');
+
+            context.beginPath();
+            context.rect(188, 50, 100, 80);
+            context.fillStyle = 'yellow';
+            context.fill();
+            context.lineWidth = 7;
+            context.strokeStyle = 'black';
+            context.stroke();
+        }
+
+    </script>
 </body>
 </html>
