@@ -44,7 +44,7 @@
         </div>
         <div id="slide" style="float:right; width:90%; height:100vh; background-color:#F3F3F3;">
             <div id="editarea" style="height:90vh; background-color:white" class="edit">
-                <canvas id="current" style="width:100%; height:100%" ></canvas>
+                <canvas id="mycanvas" style="width:100%; height:100%" ></canvas>
             </div>
         </div>
     </div>
@@ -55,7 +55,7 @@
     </script>
     <script>
         function drawLine() {
-            var canvas = document.getElementById('current');
+            var canvas = document.getElementById('mycanvas');
             var context = canvas.getContext('2d');
             context.beginPath();
             context.moveTo(0, 0);
@@ -63,7 +63,7 @@
             context.stroke();
         }
         function drawRectangle() {
-            var canvas = document.getElementById('current');
+            var canvas = document.getElementById('mycanvas');
             var context = canvas.getContext('2d');
 
             context.beginPath();

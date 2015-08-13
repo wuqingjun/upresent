@@ -1,0 +1,75 @@
+﻿<!doctype html>
+<html>
+<head>
+    <link type="text/css" href="http://lab.hakim.se/reveal-js/css/reveal.min.css" rel="stylesheet" media="all">
+    <style>
+        div.edit {
+            margin-top: 4vh;
+            margin-bottom: 4vh;
+            margin-right: 5vh;
+            margin-left: 5vh;
+        }
+        .parent img 
+        {
+            height: 100%;
+        }
+        div.button {
+            -moz-appearance:button; /* Firefox */
+            -webkit-appearance:button; /* Safari and Chrome */
+            appearance:button;
+        }
+    </style>
+
+    <meta charset="utf-8">
+    <title>U Edit</title>
+    <meta name="description" content="">
+</head>
+<body>
+<header id="top">
+    <div id="wrapper" style="height: 32px; margin-top: 3px;">
+        <div style="float: left; margin-left: 10px;  margin-right: 4px; margin-top: 2px; margin-bottom: 2px" class="parent"> <input id="filename" height="24" value="untitledfile"/>
+        </div>
+        <div role="button" class="parent button" style=" float: left; margin-right: 1px; margin-top: 4px; margin-bottom: 4px; height: 24px;">
+            <svg width="30" height="30">
+                <line x1="2" y1="10" x2="26" y2="10" style="stroke:#000000; margin-left: 2px;margin-right: 2px" />
+            </svg>
+        </div>
+        <div role="button" class="parent button" style="float: left; margin-right: 1px; margin-top: 4px; margin-bottom: 4px; height: 24px;">
+            <svg width="30" height="30">
+                <rect x="1" y="1" height="20" width="20"
+                      style="stroke: #006600; fill: #00cc00" />
+            </svg>
+            
+        </div>
+    </div>
+</header>
+    <div style="height:3px">
+        <label></label>
+    </div>
+    <div id="body" style="width: 100%; overflow:auto;height:100vh">
+        <div id="review" style="float:left; width: 10%; height:100vh">
+            <ul style=" list-style-type: none; margin: 0; padding: 0;">
+                <li> <img src="/resource/duck.jpg" style="width:8vh"> </li>
+                <li> <img src="/resource/duck2.jpg" style="width:8vh"> </li>
+            </ul>
+        </div>
+        <div id="slide" style="float:right; width:90%; height:100vh; background-color:#F3F3F3;">
+            <div id="editarea" style="height:90vh; background-color:white" class="edit">
+                <svg width="100" height="100">
+                    
+                </svg>
+            </div>
+        </div>
+    </div>
+    <div style="clear:both"></div>
+    <script type="text/javascript" src="http://lab.hakim.se/reveal-js/js/reveal.min.js"></script>
+    <script type="text/javascript">
+    Reveal.initialize({});
+    </script>
+<script>
+
+
+    
+</script>
+</body>
+</html>
