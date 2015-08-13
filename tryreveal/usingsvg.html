@@ -8,6 +8,8 @@
             margin-bottom: 4vh;
             margin-right: 5vh;
             margin-left: 5vh;
+            height:90vh; 
+            background-color:white;
         }
         .parent img 
         {
@@ -17,6 +19,7 @@
             -moz-appearance:button; /* Firefox */
             -webkit-appearance:button; /* Safari and Chrome */
             appearance:button;
+            float: left; margin-right: 1px; margin-top: 1px; margin-bottom: 1px; height: 24px;
         }
         svg.alignment {
             width:24px;
@@ -37,17 +40,15 @@
     <div id="wrapper" style="height: 32px; margin-top: 3px; align-items:center">
         <div style="float: left; margin-left: 15px;  margin-right: 4px; margin-top: 2px; margin-bottom: 2px" class="parent"> <input id="filename" height="24" value="untitledfile"/>
         </div>
-        <div role="button" class="parent button" style=" float: left; margin-right: 1px; margin-top: 1px; margin-bottom: 1px; height: 24px;">
+        <div role="button" class="parent button">
             <svg class="alignment">
                 <line x1="2" y1="10" x2="22" y2="10" style="stroke:#000000; margin-left: 2px;margin-right: 2px" />
             </svg>
         </div>
-        <div role="button" class="parent button" style="float: left; margin-right: 1px; margin-top: 1px;
-             margin-bottom: 1px; height: 24px;">
+        <div role="button" class="parent button">
             <svg class="alignment">
                 <rect x="3" y="2" height="18" width="18" style="stroke:black; stroke-width:3;fill:none" />
             </svg>
-            
         </div>
     </div>
 </header>
@@ -62,17 +63,74 @@
             </ul>
         </div>
         <div id="slide" style="float:right; width:90%; height:100vh; background-color:#F3F3F3;">
-            <div id="editarea" style="height:90vh; background-color:white" class="edit">
-                <svg width="100" height="100">
-                    
-                </svg>
+            <div id="editarea" class="edit" style="z-index:10">
+                a b c d e
             </div>
+            <svg id="slidesvg" width="100%" height="100%" style="position:relative;top:-70vh;left:10vh;">
+                <!--<rect x="3" y="2" height="18" width="18" style="stroke:black; stroke-width:3;fill:none" />-->
+            </svg>
         </div>
     </div>
     <div style="clear:both"></div>
     <script type="text/javascript" src="http://lab.hakim.se/reveal-js/js/reveal.min.js"></script>
     <script type="text/javascript">
     Reveal.initialize({});
+    </script>
+    <script type="text/javascript">
+        var svg = document.getElementById('slidesvg'); //Get svg element
+        var newElement = document.createElementNS("http://www.w3.org/2000/svg", 'rect'); //Create a path in SVG's namespace
+        newElement.setAttribute("x", "3"); //Set path's data
+        newElement.setAttribute("y", "2"); //Set path's data
+        newElement.setAttribute("height", "18"); //Set path's data
+        newElement.setAttribute("width", "18"); //Set path's data
+        newElement.setAttribute("transform", "matrix(1 0 0 1 0 0)"); //Set path's data
+        newElement.setAttribute("onmousedown", "selectElement(evt)"); //Set path's data
+        newElement.setAttribute("onmouseup", "deselectElement(evt)");
+        newElement.style.stroke = "black"; //Set stroke colour
+        newElement.style.strokeWidth = "3px"; //Set stroke width
+        newElement.style.fill = "none"; //Set stroke width
+        newElement.style.cursor = "move";
+        svg.appendChild(newElement);
+    </script>
+    <script>
+        var selectedElement = 0;
+        var currentX = 0;
+        var currentY = 0;
+        var currentMatrix = 0;
+
+        function selectElement(evt) {
+            selectedElement = evt.target;
+            currentX = evt.clientX;
+            currentY = evt.clientY;
+            currentMatrix = selectedElement.getAttributeNS(null, "transform").slice(7, -1).split(' ');
+
+            for (var i = 0; i < currentMatrix.length; i++) {
+                currentMatrix[i] = parseFloat(currentMatrix[i]);
+            }
+
+            selectedElement.setAttributeNS(null, "onmousemove", "moveElement(evt)");
+        }
+        function moveElement(evt) {
+            dx = evt.clientX - currentX;
+            dy = evt.clientY - currentY;
+            currentMatrix[4] += dx;
+            currentMatrix[5] += dy;
+            newMatrix = "matrix(" + currentMatrix.join(' ') + ")";
+
+            selectedElement.style.left = evt.clientX;
+            selectedElement.style.top = evt.clientY;
+            selectedElement.setAttribute(null, "style.left", evt.clientX);
+            selectedElement.setAttribute(null, "style.top", vt.clientY);
+            currentX = evt.clientX;
+            currentY = evt.clientY;
+        }
+        function deselectElement(evt) {
+            if (selectedElement != 0) {
+                selectedElement.removeAttributeNS(null, "onmousemove");
+                selectedElement.removeAttributeNS(null, "onmouseup");
+                selectedElement = 0;
+            }
+        }
     </script>
 <script>
 
