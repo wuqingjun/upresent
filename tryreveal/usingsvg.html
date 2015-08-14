@@ -1,33 +1,46 @@
 ﻿<!doctype html>
 <html>
 <head>
+    <meta charset="utf-8">
+    <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="//code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
     <link type="text/css" href="http://lab.hakim.se/reveal-js/css/reveal.min.css" rel="stylesheet" media="all">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
     <style>
         div.edit {
             margin-top: 4vh;
             margin-bottom: 4vh;
             margin-right: 5vh;
             margin-left: 5vh;
-            height:90vh; 
-            background-color:white;
+            height: 90vh;
+            background-color: white;
         }
-        .parent img 
+        div.rectangle {
+            height: 20px;
+            width: 20px;
+            border:3px solid #000;
+        }
+        div.line 
+        {
+           width:20px; height:2px;background-color: #000000;      
+        }
+        .parent img
         {
             height: 100%;
         }
         div.button {
-            -moz-appearance:button; /* Firefox */
-            -webkit-appearance:button; /* Safari and Chrome */
-            appearance:button;
-            float: left; margin-right: 1px; margin-top: 1px; margin-bottom: 1px; height: 24px;
+            -moz-appearance: button; /* Firefox */
+            -webkit-appearance: button; /* Safari and Chrome */
+            appearance: button;
+            float: left;margin-right: 1px;margin-top: 1px;margin-bottom: 1px;height: 24px;
         }
         svg.alignment {
-            width:24px;
-            height:24px;
-            margin-left:1px;
-            margin-right:1px;
-            margin-top:1px;
-            margin-bottom:1px;
+            width: 24px;
+            height: 24px;
+            margin-left: 1px;
+            margin-right: 1px;
+            margin-top: 1px;
+            margin-bottom: 1px;
         }
     </style>
 
@@ -36,22 +49,22 @@
     <meta name="description" content="">
 </head>
 <body>
-<header id="top">
-    <div id="wrapper" style="height: 32px; margin-top: 3px; align-items:center">
-        <div style="float: left; margin-left: 15px;  margin-right: 4px; margin-top: 2px; margin-bottom: 2px" class="parent"> <input id="filename" height="24" value="untitledfile"/>
+    <header id="top">
+        <div id="wrapper" style="height: 32px; margin-top: 3px; align-items:center">
+            <div style="float: left; margin-left: 15px;  margin-right: 4px; margin-top: 2px; margin-bottom: 2px" class="parent"> <input id="filename" height="24" value="untitledfile"/>
+            </div>
+            <div role="button" class="parent button" onclick="drawLine();">
+                <svg class="alignment">
+                    <line x1="2" y1="10" x2="22" y2="10" style="stroke:#000000; margin-left: 2px;margin-right: 2px" />
+                </svg>
+            </div>
+            <div role="button" class="parent button" onclick="drawRect();">
+                <svg class="alignment">
+                    <rect x="3" y="2" height="18" width="18" style="stroke:black; stroke-width:3;fill:none" />
+                </svg>
+            </div>
         </div>
-        <div role="button" class="parent button">
-            <svg class="alignment">
-                <line x1="2" y1="10" x2="22" y2="10" style="stroke:#000000; margin-left: 2px;margin-right: 2px" />
-            </svg>
-        </div>
-        <div role="button" class="parent button">
-            <svg class="alignment">
-                <rect x="3" y="2" height="18" width="18" style="stroke:black; stroke-width:3;fill:none" />
-            </svg>
-        </div>
-    </div>
-</header>
+    </header>
     <div style="height:3px">
         <label></label>
     </div>
@@ -62,80 +75,40 @@
                 <li> <img src="/resource/duck2.jpg" style="width:8vh"> </li>
             </ul>
         </div>
-        <div id="slide" style="float:right; width:90%; height:100vh; background-color:#F3F3F3;">
-            <div id="editarea" class="edit" style="z-index:10">
-                a b c d e
+        <div id="slide" style="float: right; width: 90%; height: 100vh; background-color: #F3F3F3;">
+            <div id="editarea" class="edit" style="position: relative">
             </div>
-            <svg id="slidesvg" width="100%" height="100%" style="position:relative;top:-70vh;left:10vh;">
-                <!--<rect x="3" y="2" height="18" width="18" style="stroke:black; stroke-width:3;fill:none" />-->
-            </svg>
         </div>
     </div>
     <div style="clear:both"></div>
     <script type="text/javascript" src="http://lab.hakim.se/reveal-js/js/reveal.min.js"></script>
-    <script type="text/javascript">
-    Reveal.initialize({});
-    </script>
-    <script type="text/javascript">
-        var svg = document.getElementById('slidesvg'); //Get svg element
-        var newElement = document.createElementNS("http://www.w3.org/2000/svg", 'rect'); //Create a path in SVG's namespace
-        newElement.setAttribute("x", "3"); //Set path's data
-        newElement.setAttribute("y", "2"); //Set path's data
-        newElement.setAttribute("height", "18"); //Set path's data
-        newElement.setAttribute("width", "18"); //Set path's data
-        newElement.setAttribute("transform", "matrix(1 0 0 1 0 0)"); //Set path's data
-        newElement.setAttribute("onmousedown", "selectElement(evt)"); //Set path's data
-        newElement.setAttribute("onmouseup", "deselectElement(evt)");
-        newElement.style.stroke = "black"; //Set stroke colour
-        newElement.style.strokeWidth = "3px"; //Set stroke width
-        newElement.style.fill = "none"; //Set stroke width
-        newElement.style.cursor = "move";
-        svg.appendChild(newElement);
-    </script>
-    <script>
-        var selectedElement = 0;
-        var currentX = 0;
-        var currentY = 0;
-        var currentMatrix = 0;
-
-        function selectElement(evt) {
-            selectedElement = evt.target;
-            currentX = evt.clientX;
-            currentY = evt.clientY;
-            currentMatrix = selectedElement.getAttributeNS(null, "transform").slice(7, -1).split(' ');
-
-            for (var i = 0; i < currentMatrix.length; i++) {
-                currentMatrix[i] = parseFloat(currentMatrix[i]);
-            }
-
-            selectedElement.setAttributeNS(null, "onmousemove", "moveElement(evt)");
-        }
-        function moveElement(evt) {
-            dx = evt.clientX - currentX;
-            dy = evt.clientY - currentY;
-            currentMatrix[4] += dx;
-            currentMatrix[5] += dy;
-            newMatrix = "matrix(" + currentMatrix.join(' ') + ")";
-
-            selectedElement.style.left = evt.clientX;
-            selectedElement.style.top = evt.clientY;
-            selectedElement.setAttribute(null, "style.left", evt.clientX);
-            selectedElement.setAttribute(null, "style.top", vt.clientY);
-            currentX = evt.clientX;
-            currentY = evt.clientY;
-        }
-        function deselectElement(evt) {
-            if (selectedElement != 0) {
-                selectedElement.removeAttributeNS(null, "onmousemove");
-                selectedElement.removeAttributeNS(null, "onmouseup");
-                selectedElement = 0;
-            }
-        }
-    </script>
-<script>
+    <script type="text/javascript"> Reveal.initialize({}); </script>
 
 
+<script type="text/javascript">
+    $(function() {
+
+    });
     
+    function drawRect() {
+        var ele = document.createElement("div");
+        ele.setAttribute('id', "mydraggable");
+        ele.setAttribute('class', 'rectangle');
+        ele.setAttribute('width', '80');
+        ele.setAttribute('height', '80');
+        $('#editarea').append(ele);
+        $('#mydraggable').draggable();
+        $('#mydraggable').resizable();
+    }
+
+    function drawLine() {
+        var ele = document.createElement("div");
+        ele.setAttribute('id', "myline");
+        ele.setAttribute('class', 'line');
+        $('#editarea').append(ele);
+        $('#myline').draggable();
+        $('#myline').resizable();
+    }
 </script>
 </body>
 </html>

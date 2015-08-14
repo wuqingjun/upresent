@@ -63,6 +63,11 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="overlappediv.html" />
+    <Content Include="public\jquery-1.11.3.min.js" />
+    <Content Include="public\jquery-ui.min.css" />
+    <Content Include="public\jquery-ui.min.js" />
+    <Content Include="public\jquery-ui.structure.min.css" />
     <Content Include="resource\duck.jpg" />
     <Content Include="resource\duck2.jpg" />
     <Content Include="packages.config" />
