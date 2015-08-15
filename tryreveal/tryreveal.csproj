@@ -68,6 +68,7 @@
     <Content Include="public\jquery-ui.min.css" />
     <Content Include="public\jquery-ui.min.js" />
     <Content Include="public\jquery-ui.structure.min.css" />
+    <Content Include="resizeline.html" />
     <Content Include="resource\duck.jpg" />
     <Content Include="resource\duck2.jpg" />
     <Content Include="packages.config" />
