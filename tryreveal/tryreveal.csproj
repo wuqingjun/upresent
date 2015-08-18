@@ -63,6 +63,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bootstrapresponsive.html" />
+    <Content Include="horizontal.html" />
     <Content Include="overlappediv.html" />
     <Content Include="public\jquery-1.11.3.min.js" />
     <Content Include="public\jquery-ui.min.css" />
