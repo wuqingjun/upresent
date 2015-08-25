@@ -1,0 +1,36 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+</head>
+<body>
+
+    <div class="w3-container">
+        <h1>
+            Longest Substring Without Repeating Characters
+        </h1>
+
+<pre style='color:#000000;background:#ffffff;'>class Solution 
+<span style='color:#800080; '>{</span>
+<span style='color:#e34adc; '>public:</span>
+        <span style='color:#800000; font-weight:bold; '>int</span> lengthOfLongestSubstring<span style='color:#808030; '>(</span>string s<span style='color:#808030; '>)</span> 
+        <span style='color:#800080; '>{</span>
+        unordered_map<span style='color:#808030; '>&lt;</span><span style='color:#800000; font-weight:bold; '>char</span><span style='color:#808030; '>,</span> <span style='color:#800000; font-weight:bold; '>int</span><span style='color:#808030; '>></span> mp<span style='color:#800080; '>;</span>
+        <span style='color:#800000; font-weight:bold; '>int</span> maxlen <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span>
+        <span style='color:#800000; font-weight:bold; '>for</span><span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>int</span> i <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#808030; '>,</span> startidx <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span> i <span style='color:#808030; '>&lt;</span> s<span style='color:#808030; '>.</span>length<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span> mp<span style='color:#808030; '>[</span>s<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>]</span> <span style='color:#808030; '>=</span> i<span style='color:#808030; '>,</span> <span style='color:#808030; '>+</span><span style='color:#808030; '>+</span>i<span style='color:#808030; '>)</span>
+        <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>if</span><span style='color:#808030; '>(</span>mp<span style='color:#808030; '>.</span>find<span style='color:#808030; '>(</span>s<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>!</span><span style='color:#808030; '>=</span> end<span style='color:#808030; '>(</span>mp<span style='color:#808030; '>)</span> <span style='color:#808030; '>&amp;</span><span style='color:#808030; '>&amp;</span> mp<span style='color:#808030; '>[</span>s<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>]</span> <span style='color:#808030; '>></span><span style='color:#808030; '>=</span> startidx<span style='color:#808030; '>)</span>
+        <span style='color:#800080; '>{</span>
+                startidx <span style='color:#808030; '>=</span> mp<span style='color:#808030; '>[</span>s<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>]</span> <span style='color:#808030; '>+</span> <span style='color:#008c00; '>1</span><span style='color:#800080; '>;</span>
+        <span style='color:#800080; '>}</span>
+            maxlen <span style='color:#808030; '>=</span> <span style='color:#603000; '>max</span><span style='color:#808030; '>(</span>maxlen<span style='color:#808030; '>,</span> i <span style='color:#808030; '>-</span> startidx <span style='color:#808030; '>+</span> <span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+        <span style='color:#800080; '>}</span>
+        <span style='color:#800000; font-weight:bold; '>return</span> maxlen<span style='color:#800080; '>;</span>
+        <span style='color:#800080; '>}</span>
+<span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>
+</pre>
+    </div>
+</body>
+</html>			

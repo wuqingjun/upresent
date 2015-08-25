@@ -31,11 +31,18 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="public\javascripts\checkKey.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\fastleet.js" />
     <Compile Include="routes\users.js" />
     <Compile Include="bin\www" />
     <Content Include="package.json" />
+    <Content Include="public\fastleet\1.question.html" />
+    <Content Include="public\fastleet\2.question.html" />
+    <Content Include="public\fastleet\1.solution.html" />
+    <Content Include="public\fastleet\2.solution.html" />
+    <Content Include="public\fastleet\3.question.html" />
+    <Content Include="public\fastleet\3.solution.html" />
     <Content Include="public\fastleet\index.html" />
     <Content Include="public\stylesheets\style.styl" />
     <Content Include="README.md" />
