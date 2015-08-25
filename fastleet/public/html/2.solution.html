@@ -1,0 +1,50 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="/public/style/w3.css">
+    <title></title>
+</head>
+<body>
+
+    <div class="w3-container">
+        <h1>
+            Add Two Numbers
+        </h1>
+<pre style='color:#000000;background:#ffffff;'>
+class Solution <span style='color:#800080; '>
+{</span>
+<span style='color:#e34adc; '>public:</span>
+	ListNode <span style='color:#808030; '>*</span>addTwoNumbers<span style='color:#808030; '>(</span>ListNode <span style='color:#808030; '>*</span>l1<span style='color:#808030; '>,</span> ListNode <span style='color:#808030; '>*</span>l2<span style='color:#808030; '>)</span> 
+	<span style='color:#800080; '>{</span>
+		<span style='color:#800000; font-weight:bold; '>int</span> sum <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span>
+		ListNode <span style='color:#808030; '>*</span> head <span style='color:#808030; '>=</span> <span style='color:#7d0045; '>NULL</span><span style='color:#800080; '>;</span>
+		<span style='color:#800000; font-weight:bold; '>for</span><span style='color:#808030; '>(</span>ListNode <span style='color:#808030; '>*</span> curr <span style='color:#808030; '>=</span> <span style='color:#7d0045; '>NULL</span><span style='color:#808030; '>,</span> <span style='color:#808030; '>*</span> temp <span style='color:#808030; '>=</span> <span style='color:#7d0045; '>NULL</span><span style='color:#800080; '>;</span> l1 <span style='color:#808030; '>|</span><span style='color:#808030; '>|</span> l2 <span style='color:#808030; '>|</span><span style='color:#808030; '>|</span> sum <span style='color:#808030; '>!</span><span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span> sum <span style='color:#808030; '>/</span><span style='color:#808030; '>=</span> <span style='color:#008c00; '>10</span><span style='color:#808030; '>,</span> curr <span style='color:#808030; '>=</span> temp<span style='color:#808030; '>)</span>
+		<span style='color:#800080; '>{</span>
+			<span style='color:#800000; font-weight:bold; '>if</span><span style='color:#808030; '>(</span>l1<span style='color:#808030; '>)</span>
+			<span style='color:#800080; '>{</span>
+				sum <span style='color:#808030; '>+</span><span style='color:#808030; '>=</span> l1<span style='color:#808030; '>-</span><span style='color:#808030; '>></span>val<span style='color:#800080; '>;</span>
+				l1 <span style='color:#808030; '>=</span> l1<span style='color:#808030; '>-</span><span style='color:#808030; '>></span>next<span style='color:#800080; '>;</span>
+			<span style='color:#800080; '>}</span>
+			<span style='color:#800000; font-weight:bold; '>if</span><span style='color:#808030; '>(</span>l2<span style='color:#808030; '>)</span>
+			<span style='color:#800080; '>{</span>
+				sum <span style='color:#808030; '>+</span><span style='color:#808030; '>=</span> l2<span style='color:#808030; '>-</span><span style='color:#808030; '>></span>val<span style='color:#800080; '>;</span>
+				l2 <span style='color:#808030; '>=</span> l2<span style='color:#808030; '>-</span><span style='color:#808030; '>></span>next<span style='color:#800080; '>;</span>
+			<span style='color:#800080; '>}</span>
+			temp <span style='color:#808030; '>=</span> new ListNode<span style='color:#808030; '>(</span>sum <span style='color:#808030; '>%</span> <span style='color:#008c00; '>10</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			<span style='color:#800000; font-weight:bold; '>if</span><span style='color:#808030; '>(</span>curr<span style='color:#808030; '>)</span>
+			<span style='color:#800080; '>{</span>
+				curr<span style='color:#808030; '>-</span><span style='color:#808030; '>></span>next <span style='color:#808030; '>=</span> temp<span style='color:#800080; '>;</span>
+			<span style='color:#800080; '>}</span>
+			<span style='color:#800000; font-weight:bold; '>else</span>
+			<span style='color:#800080; '>{</span>
+				head <span style='color:#808030; '>=</span> temp<span style='color:#800080; '>;</span>
+			<span style='color:#800080; '>}</span>
+		<span style='color:#800080; '>}</span>
+		<span style='color:#800000; font-weight:bold; '>return</span> head<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+<span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>
+</pre>
+    </div>
+</body>
+</html>			
