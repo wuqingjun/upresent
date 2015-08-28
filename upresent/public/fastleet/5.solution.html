@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+</head>
+<body>
+
+    <div class="w3-container">
+        <h1>
+            Longest Palindromic Substring 
+        </h1>
+
+<pre style='color:#000000;background:#ffffff;'>class Solution 
+<span style='color:#800080; '>{</span>
+<span style='color:#e34adc; '>public:</span>
+	string longestPalindrome<span style='color:#808030; '>(</span>string s<span style='color:#808030; '>)</span>
+	<span style='color:#800080; '>{</span>
+		string t<span style='color:#808030; '>(</span><span style='color:#800000; '>"</span><span style='color:#0000e6; '>#</span><span style='color:#800000; '>"</span><span style='color:#808030; '>)</span><span style='color:#808030; '>,</span> res<span style='color:#800080; '>;</span>
+		<span style='color:#800000; font-weight:bold; '>for</span> <span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>int</span> i <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span> i <span style='color:#808030; '>&lt;</span> s<span style='color:#808030; '>.</span>size<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span> <span style='color:#808030; '>+</span><span style='color:#808030; '>+</span>i<span style='color:#808030; '>)</span>
+		<span style='color:#800080; '>{</span>
+			t<span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>,</span> s<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>)</span><span style='color:#808030; '>,</span> t<span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>,</span> <span style='color:#0000e6; '>'#'</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		<span style='color:#800080; '>}</span>
+		<span style='color:#800000; font-weight:bold; '>int</span> id <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#808030; '>,</span> mx <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#808030; '>,</span> ml <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#808030; '>,</span> center <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span>
+		vector<span style='color:#808030; '>&lt;</span><span style='color:#800000; font-weight:bold; '>int</span><span style='color:#808030; '>></span> p<span style='color:#808030; '>(</span>t<span style='color:#808030; '>.</span>size<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#808030; '>,</span> <span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+		<span style='color:#800000; font-weight:bold; '>for</span> <span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>int</span> i <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span> i <span style='color:#808030; '>&lt;</span> t<span style='color:#808030; '>.</span>size<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span> <span style='color:#808030; '>+</span><span style='color:#808030; '>+</span>i<span style='color:#808030; '>)</span>
+		<span style='color:#800080; '>{</span>
+			p<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span> <span style='color:#808030; '>=</span> i <span style='color:#808030; '>&lt;</span> mx <span style='color:#800080; '>?</span> <span style='color:#603000; '>min</span><span style='color:#808030; '>(</span>p<span style='color:#808030; '>[</span><span style='color:#008c00; '>2</span> <span style='color:#808030; '>*</span> id <span style='color:#808030; '>-</span> i<span style='color:#808030; '>]</span><span style='color:#808030; '>,</span> mx <span style='color:#808030; '>-</span> i<span style='color:#808030; '>)</span> <span style='color:#800080; '>:</span> <span style='color:#008c00; '>1</span><span style='color:#800080; '>;</span>
+			<span style='color:#800000; font-weight:bold; '>while</span> <span style='color:#808030; '>(</span>i <span style='color:#808030; '>+</span> p<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span> <span style='color:#808030; '>&lt;</span> t<span style='color:#808030; '>.</span>size<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>&amp;</span><span style='color:#808030; '>&amp;</span> i <span style='color:#808030; '>></span><span style='color:#808030; '>=</span> p<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span> <span style='color:#808030; '>&amp;</span><span style='color:#808030; '>&amp;</span> t<span style='color:#808030; '>[</span>i <span style='color:#808030; '>+</span> p<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>]</span> <span style='color:#808030; '>=</span><span style='color:#808030; '>=</span> t<span style='color:#808030; '>[</span>i <span style='color:#808030; '>-</span> p<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>]</span><span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span> <span style='color:#808030; '>+</span><span style='color:#808030; '>+</span>p<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#800080; '>;</span> <span style='color:#800080; '>}</span>
+			<span style='color:#800000; font-weight:bold; '>if</span> <span style='color:#808030; '>(</span>i <span style='color:#808030; '>+</span> p<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span> <span style='color:#808030; '>-</span> <span style='color:#008c00; '>1</span> <span style='color:#808030; '>></span> mx<span style='color:#808030; '>)</span>
+			<span style='color:#800080; '>{</span>
+				id <span style='color:#808030; '>=</span> i<span style='color:#800080; '>;</span>
+				mx <span style='color:#808030; '>=</span> i <span style='color:#808030; '>+</span> p<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span> <span style='color:#808030; '>-</span> <span style='color:#008c00; '>1</span><span style='color:#800080; '>;</span>
+			<span style='color:#800080; '>}</span>
+			<span style='color:#800000; font-weight:bold; '>if</span> <span style='color:#808030; '>(</span>p<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span> <span style='color:#808030; '>></span> ml<span style='color:#808030; '>)</span>
+			<span style='color:#800080; '>{</span>
+				ml <span style='color:#808030; '>=</span> p<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#800080; '>;</span>
+				center <span style='color:#808030; '>=</span> i<span style='color:#800080; '>;</span>
+			<span style='color:#800080; '>}</span>
+		<span style='color:#800080; '>}</span>
+		<span style='color:#800000; font-weight:bold; '>for</span> <span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>int</span> i <span style='color:#808030; '>=</span> center <span style='color:#808030; '>-</span> p<span style='color:#808030; '>[</span>center<span style='color:#808030; '>]</span> <span style='color:#808030; '>+</span> <span style='color:#008c00; '>1</span><span style='color:#800080; '>;</span> i <span style='color:#808030; '>&lt;</span><span style='color:#808030; '>=</span> center <span style='color:#808030; '>+</span> p<span style='color:#808030; '>[</span>center<span style='color:#808030; '>]</span> <span style='color:#808030; '>-</span> <span style='color:#008c00; '>1</span><span style='color:#800080; '>;</span> <span style='color:#808030; '>+</span><span style='color:#808030; '>+</span>i<span style='color:#808030; '>)</span>
+		<span style='color:#800080; '>{</span>
+			<span style='color:#800000; font-weight:bold; '>if</span> <span style='color:#808030; '>(</span><span style='color:#0000e6; '>'#'</span> <span style='color:#808030; '>!</span><span style='color:#808030; '>=</span> t<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>)</span>
+			<span style='color:#800080; '>{</span>
+				res<span style='color:#808030; '>.</span>append<span style='color:#808030; '>(</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>,</span> t<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+			<span style='color:#800080; '>}</span>
+		<span style='color:#800080; '>}</span>
+		<span style='color:#800000; font-weight:bold; '>return</span> res<span style='color:#800080; '>;</span>
+	<span style='color:#800080; '>}</span>
+<span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>
+</pre>
+    </div>
+</body>
+</html>			

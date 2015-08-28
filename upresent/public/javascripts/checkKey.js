@@ -1,5 +1,5 @@
 ﻿document.onkeydown = checkKey;
-maxpage = 3
+maxpage = 11
 function checkKey(e) {
     e = e || window.event;
     

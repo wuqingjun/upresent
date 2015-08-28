@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+</head>
+<body>
+
+    <div class="w3-container">
+        <h1>
+            Palindrome Number 
+        </h1>
+
+<pre style='color:#000000;background:#ffffff;'>class Solution 
+<span style='color:#800080; '>{</span>
+<span style='color:#e34adc; '>public:</span>
+    bool isPalindrome<span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>int</span> x<span style='color:#808030; '>)</span> 
+    <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>if</span><span style='color:#808030; '>(</span>x <span style='color:#808030; '>></span> <span style='color:#008c00; '>0</span> <span style='color:#808030; '>&amp;</span><span style='color:#808030; '>&amp;</span> x <span style='color:#808030; '>%</span> <span style='color:#008c00; '>10</span> <span style='color:#808030; '>=</span><span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#808030; '>)</span> <span style='color:#800000; font-weight:bold; '>return</span> false<span style='color:#800080; '>;</span>
+        <span style='color:#800000; font-weight:bold; '>for</span><span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>int</span> y <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span> y <span style='color:#808030; '>&lt;</span><span style='color:#808030; '>=</span> x<span style='color:#800080; '>;</span> y <span style='color:#808030; '>=</span> <span style='color:#008c00; '>10</span> <span style='color:#808030; '>*</span> y <span style='color:#808030; '>+</span> x <span style='color:#808030; '>%</span> <span style='color:#008c00; '>10</span><span style='color:#808030; '>,</span> x <span style='color:#808030; '>/</span><span style='color:#808030; '>=</span> <span style='color:#008c00; '>10</span><span style='color:#808030; '>)</span>
+        <span style='color:#800080; '>{</span>
+            <span style='color:#800000; font-weight:bold; '>if</span><span style='color:#808030; '>(</span>y <span style='color:#808030; '>=</span><span style='color:#808030; '>=</span> x <span style='color:#808030; '>|</span><span style='color:#808030; '>|</span> x <span style='color:#808030; '>/</span> <span style='color:#008c00; '>10</span> <span style='color:#808030; '>=</span><span style='color:#808030; '>=</span> y<span style='color:#808030; '>)</span><span style='color:#800080; '>{</span><span style='color:#800000; font-weight:bold; '>return</span> true<span style='color:#800080; '>;</span><span style='color:#800080; '>}</span>
+        <span style='color:#800080; '>}</span>
+        <span style='color:#800000; font-weight:bold; '>return</span> false<span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span>
+<span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>
+</pre>
+    </div>
+</body>
+</html>			  

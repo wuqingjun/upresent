@@ -1,0 +1,35 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+</head>
+<body>
+
+    <div class="w3-container">
+        <h1>
+            Reverse Integer 
+        </h1>
+
+<pre style='color:#000000;background:#ffffff;'>class Solution 
+<span style='color:#800080; '>{</span>
+<span style='color:#e34adc; '>public:</span>
+    <span style='color:#800000; font-weight:bold; '>int</span> reverse<span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>int</span> x<span style='color:#808030; '>)</span> 
+    <span style='color:#800080; '>{</span>
+        bool negative <span style='color:#808030; '>=</span> x <span style='color:#808030; '>&lt;</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span>
+        <span style='color:#800000; font-weight:bold; '>long</span> <span style='color:#800000; font-weight:bold; '>long</span> res <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span>
+        <span style='color:#800000; font-weight:bold; '>while</span><span style='color:#808030; '>(</span>x<span style='color:#808030; '>)</span>
+        <span style='color:#800080; '>{</span>
+            res <span style='color:#808030; '>=</span> res <span style='color:#808030; '>*</span> <span style='color:#008c00; '>10</span> <span style='color:#808030; '>+</span> x <span style='color:#808030; '>%</span> <span style='color:#008c00; '>10</span><span style='color:#800080; '>;</span>
+            x <span style='color:#808030; '>/</span><span style='color:#808030; '>=</span> <span style='color:#008c00; '>10</span><span style='color:#800080; '>;</span>
+        <span style='color:#800080; '>}</span>
+        <span style='color:#800000; font-weight:bold; '>if</span><span style='color:#808030; '>(</span><span style='color:#808030; '>!</span>negative <span style='color:#808030; '>&amp;</span><span style='color:#808030; '>&amp;</span> res <span style='color:#808030; '>></span> <span style='color:#7d0045; '>INT_MAX</span><span style='color:#808030; '>)</span> <span style='color:#800000; font-weight:bold; '>return</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span>
+        <span style='color:#800000; font-weight:bold; '>if</span><span style='color:#808030; '>(</span>negative <span style='color:#808030; '>&amp;</span><span style='color:#808030; '>&amp;</span> res <span style='color:#808030; '>&lt;</span> <span style='color:#7d0045; '>INT_MIN</span><span style='color:#808030; '>)</span> <span style='color:#800000; font-weight:bold; '>return</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span>
+        <span style='color:#800000; font-weight:bold; '>return</span> res<span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span>
+<span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>
+</pre>
+    </div>
+</body>
+</html>			  

@@ -1,0 +1,33 @@
+﻿<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+</head>
+<body>
+
+    <div class="w3-container">
+        <h1>
+            Regular Expression Matching
+        </h1>
+
+<pre style='color:#000000;background:#ffffff;'>class Solution <span style='color:#800080; '>{</span>
+<span style='color:#e34adc; '>public:</span>
+    <span style='color:#800000; font-weight:bold; '>int</span> maxArea<span style='color:#808030; '>(</span>vector<span style='color:#808030; '>&lt;</span><span style='color:#800000; font-weight:bold; '>int</span><span style='color:#808030; '>></span> <span style='color:#808030; '>&amp;</span>height<span style='color:#808030; '>)</span> 
+    <span style='color:#800080; '>{</span>
+        <span style='color:#800000; font-weight:bold; '>int</span> res <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span>
+        <span style='color:#800000; font-weight:bold; '>for</span><span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>int</span> i <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#808030; '>,</span> j <span style='color:#808030; '>=</span> height<span style='color:#808030; '>.</span>size<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>-</span> <span style='color:#008c00; '>1</span><span style='color:#800080; '>;</span> i <span style='color:#808030; '>&lt;</span> j<span style='color:#800080; '>;</span> <span style='color:#808030; '>)</span>
+        <span style='color:#800080; '>{</span>
+            <span style='color:#800000; font-weight:bold; '>int</span> a <span style='color:#808030; '>=</span> height<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>,</span> b <span style='color:#808030; '>=</span> height<span style='color:#808030; '>[</span>j<span style='color:#808030; '>]</span><span style='color:#800080; '>;</span>
+            res <span style='color:#808030; '>=</span> <span style='color:#603000; '>max</span><span style='color:#808030; '>(</span>res<span style='color:#808030; '>,</span> <span style='color:#603000; '>min</span><span style='color:#808030; '>(</span>a<span style='color:#808030; '>,</span> b<span style='color:#808030; '>)</span> <span style='color:#808030; '>*</span> <span style='color:#808030; '>(</span>j <span style='color:#808030; '>-</span> i<span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
+            <span style='color:#800000; font-weight:bold; '>if</span><span style='color:#808030; '>(</span>a <span style='color:#808030; '>&lt;</span><span style='color:#808030; '>=</span> b<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span> <span style='color:#808030; '>+</span><span style='color:#808030; '>+</span>i<span style='color:#800080; '>;</span> <span style='color:#800080; '>}</span>
+            <span style='color:#800000; font-weight:bold; '>if</span><span style='color:#808030; '>(</span>a <span style='color:#808030; '>></span><span style='color:#808030; '>=</span> b<span style='color:#808030; '>)</span> <span style='color:#800080; '>{</span> <span style='color:#808030; '>-</span><span style='color:#808030; '>-</span>j<span style='color:#800080; '>;</span> <span style='color:#800080; '>}</span>
+        <span style='color:#800080; '>}</span>
+        <span style='color:#800000; font-weight:bold; '>return</span> res<span style='color:#800080; '>;</span>
+    <span style='color:#800080; '>}</span>
+<span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>
+</pre>
+    </div>
+</body>
+</html>			  
