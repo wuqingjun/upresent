@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tryreveal", "tryreveal\tryr
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "fastleet", "fastleet\fastleet.njsproj", "{3B1C0C37-8E3B-4447-A5DC-87E79DC1E1FE}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GrabLeet", "GrabLeet\GrabLeet.csproj", "{4893B22C-0F65-416C-8D5E-6DA5FC003645}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{3B1C0C37-8E3B-4447-A5DC-87E79DC1E1FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{3B1C0C37-8E3B-4447-A5DC-87E79DC1E1FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{3B1C0C37-8E3B-4447-A5DC-87E79DC1E1FE}.Release|Any CPU.Build.0 = Release|Any CPU
+		{4893B22C-0F65-416C-8D5E-6DA5FC003645}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{4893B22C-0F65-416C-8D5E-6DA5FC003645}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{4893B22C-0F65-416C-8D5E-6DA5FC003645}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{4893B22C-0F65-416C-8D5E-6DA5FC003645}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
