@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WatiN.Core;
+using WatiN.Core.Native.Chrome;
 
 namespace fetchleet
 {
@@ -23,6 +25,8 @@ namespace fetchleet
             using (var browser = new IE("https://leetcode.com"))
             {
 
+                var toHtml = new IE("http://hilite.me/");
+
                 browser.Link(Find.ByClass("btn btn-default")).Click();
                 browser.TextField(Find.ById("id_login")).TypeText("qjwu9908@hotmail.com");
                 browser.TextField(Find.ById("id_password")).TypeText("Test123");
@@ -44,6 +48,8 @@ namespace fetchleet
 
                         string solutionCode = "";
 
+                        solutionCode = solutionCode.Replace("\\r\\n\\r\\n", "\\r\\n");
+
                         foreach (var resultRow in resultBody.OwnTableRows)
                         {
                             if (resultRow.Elements[3].Text.Contains("Accepted"))
@@ -57,20 +63,18 @@ namespace fetchleet
                             }
                         }
 
-                        using (var toHtmlBrowser = new IE("https://tohtml.com"))
-                        {
-                            toHtmlBrowser.TextField(Find.ById("code_src")).TypeText(solutionCode);
+                        toHtml.WaitForComplete(5);
 
-                            toHtmlBrowser.SelectList(Find.ByName("type")).SelectByValue("cpp");
+                        toHtml.TextField(Find.ByName("code")).TypeText(solutionCode);
 
-                            toHtmlBrowser.Button(Find.ByName("Submit")).Click();
-                        }
+                        toHtml.SelectList(Find.ByName("lexer")).SelectByValue("cpp");
+
+                        toHtml.Button(Find.ByValue("Highlight!")).Click();
 
                         browser.Back();
                     }
                 }
             }
-
         }
 
     }
