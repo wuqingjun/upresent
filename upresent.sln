@@ -3,8 +3,6 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 2013
 VisualStudioVersion = 12.0.30723.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "upresent", "upresent\upresent.njsproj", "{B2148237-0E55-4E77-9A6F-A2A04586ED41}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "tryreveal", "tryreveal\tryreveal.csproj", "{A55C77A8-A3AD-4DBC-9A4F-8897A6C6B3C4}"
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "fastleet", "fastleet\fastleet.njsproj", "{3B1C0C37-8E3B-4447-A5DC-87E79DC1E1FE}"
@@ -17,10 +15,6 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B2148237-0E55-4E77-9A6F-A2A04586ED41}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B2148237-0E55-4E77-9A6F-A2A04586ED41}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B2148237-0E55-4E77-9A6F-A2A04586ED41}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B2148237-0E55-4E77-9A6F-A2A04586ED41}.Release|Any CPU.Build.0 = Release|Any CPU
 		{A55C77A8-A3AD-4DBC-9A4F-8897A6C6B3C4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{A55C77A8-A3AD-4DBC-9A4F-8897A6C6B3C4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A55C77A8-A3AD-4DBC-9A4F-8897A6C6B3C4}.Release|Any CPU.ActiveCfg = Release|Any CPU
