@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,44 +58,43 @@
 </head>
 <body>
 
-    <div class="w3-container">
+    <div style="margin-left:10px;">
         <h1>
-            Add Two Numbers
+            Add Two Numbers 
         </h1>
-<pre style='color:#000000;background:#ffffff;'>
-class Solution <span style='color:#800080; '>
-{</span>
-<span style='color:#e34adc; '>public:</span>
-	ListNode <span style='color:#808030; '>*</span>addTwoNumbers<span style='color:#808030; '>(</span>ListNode <span style='color:#808030; '>*</span>l1<span style='color:#808030; '>,</span> ListNode <span style='color:#808030; '>*</span>l2<span style='color:#808030; '>)</span> 
-	<span style='color:#800080; '>{</span>
-		<span style='color:#800000; font-weight:bold; '>int</span> sum <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span>
-		ListNode <span style='color:#808030; '>*</span> head <span style='color:#808030; '>=</span> <span style='color:#7d0045; '>NULL</span><span style='color:#800080; '>;</span>
-		<span style='color:#800000; font-weight:bold; '>for</span><span style='color:#808030; '>(</span>ListNode <span style='color:#808030; '>*</span> curr <span style='color:#808030; '>=</span> <span style='color:#7d0045; '>NULL</span><span style='color:#808030; '>,</span> <span style='color:#808030; '>*</span> temp <span style='color:#808030; '>=</span> <span style='color:#7d0045; '>NULL</span><span style='color:#800080; '>;</span> l1 <span style='color:#808030; '>|</span><span style='color:#808030; '>|</span> l2 <span style='color:#808030; '>|</span><span style='color:#808030; '>|</span> sum <span style='color:#808030; '>!</span><span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span> sum <span style='color:#808030; '>/</span><span style='color:#808030; '>=</span> <span style='color:#008c00; '>10</span><span style='color:#808030; '>,</span> curr <span style='color:#808030; '>=</span> temp<span style='color:#808030; '>)</span>
-		<span style='color:#800080; '>{</span>
-			<span style='color:#800000; font-weight:bold; '>if</span><span style='color:#808030; '>(</span>l1<span style='color:#808030; '>)</span>
-			<span style='color:#800080; '>{</span>
-				sum <span style='color:#808030; '>+</span><span style='color:#808030; '>=</span> l1<span style='color:#808030; '>-</span><span style='color:#808030; '>></span>val<span style='color:#800080; '>;</span>
-				l1 <span style='color:#808030; '>=</span> l1<span style='color:#808030; '>-</span><span style='color:#808030; '>></span>next<span style='color:#800080; '>;</span>
-			<span style='color:#800080; '>}</span>
-			<span style='color:#800000; font-weight:bold; '>if</span><span style='color:#808030; '>(</span>l2<span style='color:#808030; '>)</span>
-			<span style='color:#800080; '>{</span>
-				sum <span style='color:#808030; '>+</span><span style='color:#808030; '>=</span> l2<span style='color:#808030; '>-</span><span style='color:#808030; '>></span>val<span style='color:#800080; '>;</span>
-				l2 <span style='color:#808030; '>=</span> l2<span style='color:#808030; '>-</span><span style='color:#808030; '>></span>next<span style='color:#800080; '>;</span>
-			<span style='color:#800080; '>}</span>
-			temp <span style='color:#808030; '>=</span> new ListNode<span style='color:#808030; '>(</span>sum <span style='color:#808030; '>%</span> <span style='color:#008c00; '>10</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
-			<span style='color:#800000; font-weight:bold; '>if</span><span style='color:#808030; '>(</span>curr<span style='color:#808030; '>)</span>
-			<span style='color:#800080; '>{</span>
-				curr<span style='color:#808030; '>-</span><span style='color:#808030; '>></span>next <span style='color:#808030; '>=</span> temp<span style='color:#800080; '>;</span>
-			<span style='color:#800080; '>}</span>
-			<span style='color:#800000; font-weight:bold; '>else</span>
-			<span style='color:#800080; '>{</span>
-				head <span style='color:#808030; '>=</span> temp<span style='color:#800080; '>;</span>
-			<span style='color:#800080; '>}</span>
-		<span style='color:#800080; '>}</span>
-		<span style='color:#800000; font-weight:bold; '>return</span> head<span style='color:#800080; '>;</span>
-	<span style='color:#800080; '>}</span>
-<span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>
-</pre>
-    </div>
+		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;padding:.1em .3em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span> {
+<span style="color: #997700; font-weight: bold">public:</span>
+    ListNode <span style="color: #333333">*</span>addTwoNumbers(ListNode <span style="color: #333333">*</span>l1, ListNode <span style="color: #333333">*</span>l2) 
+    {
+        <span style="color: #333399; font-weight: bold">int</span> sum <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+        ListNode <span style="color: #333333">*</span> head <span style="color: #333333">=</span> <span style="color: #007020">NULL</span>;
+        <span style="color: #008800; font-weight: bold">for</span>(ListNode <span style="color: #333333">*</span> curr <span style="color: #333333">=</span> <span style="color: #007020">NULL</span>, <span style="color: #333333">*</span> temp <span style="color: #333333">=</span> <span style="color: #007020">NULL</span>; l1 <span style="color: #333333">||</span> l2 <span style="color: #333333">||</span> sum <span style="color: #333333">!=</span> <span style="color: #0000DD; font-weight: bold">0</span>; sum <span style="color: #333333">/=</span> <span style="color: #0000DD; font-weight: bold">10</span>, curr <span style="color: #333333">=</span> temp)
+        {
+            <span style="color: #008800; font-weight: bold">if</span>(l1)
+            {
+                sum <span style="color: #333333">+=</span> l1<span style="color: #333333">-&gt;</span>val;
+                l1 <span style="color: #333333">=</span> l1<span style="color: #333333">-&gt;</span>next;
+            }
+            <span style="color: #008800; font-weight: bold">if</span>(l2)
+            {
+                sum <span style="color: #333333">+=</span> l2<span style="color: #333333">-&gt;</span>val;
+                l2 <span style="color: #333333">=</span> l2<span style="color: #333333">-&gt;</span>next;
+            }
+            temp <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> ListNode(sum <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">10</span>);
+            <span style="color: #008800; font-weight: bold">if</span>(curr)
+            {
+                curr<span style="color: #333333">-&gt;</span>next <span style="color: #333333">=</span> temp;
+            }
+            <span style="color: #008800; font-weight: bold">else</span>
+            {
+                head <span style="color: #333333">=</span> temp;
+            }
+        }
+        <span style="color: #008800; font-weight: bold">return</span> head;
+    }
+};
+</pre></div>
+
+   </div>
 </body>
 </html>			

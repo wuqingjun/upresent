@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        $(document).on("pagecreate","#pageone",function(){
+          $("p").on("swipe",function(){
+            $(this).hide();
+          });
+        });
+    </script>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            font-size: 1em;
+        }
+
+        @media (max-width: 300px) {
+            html {
+                font-size: 70%;
+            }
+        }
+
+        @media (min-width: 414px) {
+            html {
+                font-size: 75%;
+            }
+        }
+
+        @media (min-width: 500px) {
+            html {
+                font-size: 80%;
+            }
+        }
+
+        @media (min-width: 700px) {
+            html {
+                font-size: 120%;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            html {
+                font-size: 200%;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+</head>
+<body>
+
+    <div style="margin-left:10px;">
+        <h1>
+            LRU Cache 
+        </h1>
+		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;padding:.1em .3em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">struct</span> Node
+{
+    Node(<span style="color: #333399; font-weight: bold">int</span> k, <span style="color: #333399; font-weight: bold">int</span> v) <span style="color: #333333">:</span> key(k), val(v), prev(<span style="color: #007020">NULL</span>), next(<span style="color: #007020">NULL</span>) {}
+    <span style="color: #333399; font-weight: bold">int</span> key;
+    <span style="color: #333399; font-weight: bold">int</span> val;
+    Node <span style="color: #333333">*</span>prev;
+    Node <span style="color: #333333">*</span>next;
+};
+
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">DLL</span>
+{
+<span style="color: #997700; font-weight: bold">public:</span>
+    Node <span style="color: #333333">*</span> head;
+    Node <span style="color: #333333">*</span> tail;
+<span style="color: #997700; font-weight: bold">public:</span>
+    DLL()
+    {
+        head <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> Node(<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>, <span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>);
+        tail <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> Node(<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>, <span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>);
+        head<span style="color: #333333">-&gt;</span>next <span style="color: #333333">=</span> tail;
+        tail<span style="color: #333333">-&gt;</span>prev <span style="color: #333333">=</span> head;
+    }
+    <span style="color: #333399; font-weight: bold">void</span> append(Node <span style="color: #333333">*</span> n)
+    {
+        tail<span style="color: #333333">-&gt;</span>prev<span style="color: #333333">-&gt;</span>next <span style="color: #333333">=</span> n;
+        n<span style="color: #333333">-&gt;</span>prev <span style="color: #333333">=</span> tail<span style="color: #333333">-&gt;</span>prev;
+        n<span style="color: #333333">-&gt;</span>next <span style="color: #333333">=</span> tail;
+        tail<span style="color: #333333">-&gt;</span>prev <span style="color: #333333">=</span> n;
+    }
+    <span style="color: #333399; font-weight: bold">void</span> remove(Node <span style="color: #333333">*</span> n)
+    {
+        n<span style="color: #333333">-&gt;</span>prev<span style="color: #333333">-&gt;</span>next <span style="color: #333333">=</span> n <span style="color: #333333">-&gt;</span>next;
+        n<span style="color: #333333">-&gt;</span>next<span style="color: #333333">-&gt;</span>prev <span style="color: #333333">=</span> n<span style="color: #333333">-&gt;</span>prev;
+    }
+};
+
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">LRUCache</span>
+{
+<span style="color: #997700; font-weight: bold">private:</span>
+    <span style="color: #333399; font-weight: bold">int</span> Size;
+    <span style="color: #333399; font-weight: bold">int</span> Count;
+    unordered_map<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span>, Node <span style="color: #333333">*&gt;</span> mp;
+    DLL dll;
+<span style="color: #997700; font-weight: bold">public:</span>
+    LRUCache(<span style="color: #333399; font-weight: bold">int</span> capacity) <span style="color: #333333">:</span> Size(capacity), Count(<span style="color: #0000DD; font-weight: bold">0</span>)
+    {
+        
+    }
+    
+    <span style="color: #333399; font-weight: bold">int</span> get(<span style="color: #333399; font-weight: bold">int</span> key) 
+    {
+        <span style="color: #008800; font-weight: bold">if</span>(mp.find(key) <span style="color: #333333">!=</span> end(mp))
+        {
+            dll.remove(mp[key]);
+            dll.append(mp[key]);
+            <span style="color: #008800; font-weight: bold">return</span> mp[key]<span style="color: #333333">-&gt;</span>val;
+        }
+        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>;
+    }
+    
+    <span style="color: #333399; font-weight: bold">void</span> set(<span style="color: #333399; font-weight: bold">int</span> key, <span style="color: #333399; font-weight: bold">int</span> value) 
+    {
+        <span style="color: #008800; font-weight: bold">if</span>(mp.find(key) <span style="color: #333333">!=</span> end(mp))
+        {
+            mp[key]<span style="color: #333333">-&gt;</span>val <span style="color: #333333">=</span> value;
+            dll.remove(mp[key]);
+            dll.append(mp[key]);
+        }
+        <span style="color: #008800; font-weight: bold">else</span>
+        {
+            <span style="color: #008800; font-weight: bold">auto</span> <span style="color: #333333">*</span> p <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> Node(key, value);
+            <span style="color: #008800; font-weight: bold">if</span>(Count <span style="color: #333333">==</span> Size)
+            {
+                <span style="color: #008800; font-weight: bold">auto</span> itr <span style="color: #333333">=</span> mp.find(dll.head<span style="color: #333333">-&gt;</span>next<span style="color: #333333">-&gt;</span>key);
+                mp.erase(itr);
+                dll.remove(dll.head<span style="color: #333333">-&gt;</span>next);
+                dll.append(p);
+                mp[key] <span style="color: #333333">=</span> p;
+            }
+            <span style="color: #008800; font-weight: bold">else</span>
+            {
+                mp[key] <span style="color: #333333">=</span> p;
+                dll.append(p);
+                <span style="color: #333333">++</span>Count;
+            }
+        }
+    }
+};
+</pre></div>
+
+   </div>
+</body>
+</html>			

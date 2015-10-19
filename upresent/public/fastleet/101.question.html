@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        $(document).on("pagecreate","#pageone",function(){
+          $("p").on("swipe",function(){
+            $(this).hide();
+          });
+        });
+    </script>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+    <style>
+html { font-size: 62.5%; }
+body { font-size: 1em;}
+
+@media (max-width: 300px) {
+    html { font-size: 70%; }
+}
+
+@media (min-width: 414px) {
+    html { font-size: 75%; }
+}
+
+@media (min-width: 500px) {
+    html { font-size: 80%; }
+}
+
+@media (min-width: 700px) {
+    html { font-size: 120%; }
+}
+
+@media (min-width: 1200px) {
+    html { font-size: 200%; }
+}
+    </style>
+</head>
+<body>
+
+<div style="margin-left:10px; ">
+    <h1>
+        Symmetric Tree 
+    </h1>
+	<p></p><p>Given a binary tree, check whether it is a mirror of itself (ie, symmetric around its center).</p><p>For example, this binary tree is symmetric: </p><p></p><p>But the following is not:</p><p></p><p>Note:
+ Bonus points if you could solve it both recursively and iteratively. </p><p>confused what "{1,#,2,3}" means? > read more on how binary tree is serialized on OJ.</p><p>The serialization of a binary tree follows a level order traversal, where '#' signifies a path terminator where no node exists below. </p><p>Here's an example:</p><p></p><p></p>
+</div>
+
+</body>
+</html>

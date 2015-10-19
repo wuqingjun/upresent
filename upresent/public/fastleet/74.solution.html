@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        $(document).on("pagecreate","#pageone",function(){
+          $("p").on("swipe",function(){
+            $(this).hide();
+          });
+        });
+    </script>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            font-size: 1em;
+        }
+
+        @media (max-width: 300px) {
+            html {
+                font-size: 70%;
+            }
+        }
+
+        @media (min-width: 414px) {
+            html {
+                font-size: 75%;
+            }
+        }
+
+        @media (min-width: 500px) {
+            html {
+                font-size: 80%;
+            }
+        }
+
+        @media (min-width: 700px) {
+            html {
+                font-size: 120%;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            html {
+                font-size: 200%;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+</head>
+<body>
+
+    <div style="margin-left:10px;">
+        <h1>
+            Search a 2D Matrix 
+        </h1>
+		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;padding:.1em .3em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span> {
+<span style="color: #997700; font-weight: bold">public:</span>
+    <span style="color: #333399; font-weight: bold">bool</span> searchMatrix(vector<span style="color: #333333">&lt;</span>vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> <span style="color: #333333">&gt;</span> <span style="color: #333333">&amp;</span>matrix, <span style="color: #333399; font-weight: bold">int</span> t) 
+    {
+        <span style="color: #333399; font-weight: bold">int</span> m <span style="color: #333333">=</span> matrix.size(), n <span style="color: #333333">=</span> matrix[<span style="color: #0000DD; font-weight: bold">0</span>].size();
+        <span style="color: #333399; font-weight: bold">int</span> l <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>, h <span style="color: #333333">=</span> m <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>, med <span style="color: #333333">=</span> (l <span style="color: #333333">+</span> h) <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>;
+        <span style="color: #008800; font-weight: bold">for</span>(; l <span style="color: #333333">&lt;=</span> h; med <span style="color: #333333">=</span> (l <span style="color: #333333">+</span> h) <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>)
+        {
+            <span style="color: #008800; font-weight: bold">if</span>(matrix[med][<span style="color: #0000DD; font-weight: bold">0</span>] <span style="color: #333333">&lt;=</span> t <span style="color: #333333">&amp;&amp;</span> matrix[med][n <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>] <span style="color: #333333">&gt;=</span> t)
+            {
+                <span style="color: #008800; font-weight: bold">break</span>;
+            }
+            <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span>(matrix[med][<span style="color: #0000DD; font-weight: bold">0</span>] <span style="color: #333333">&gt;</span> t)
+            {
+                h <span style="color: #333333">=</span> med <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+            }
+            <span style="color: #008800; font-weight: bold">else</span>
+            {
+                l <span style="color: #333333">=</span> med <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+            }
+        }
+        <span style="color: #008800; font-weight: bold">if</span>(l <span style="color: #333333">&lt;=</span> h)
+        {
+            l <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>, h <span style="color: #333333">=</span> n <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+            <span style="color: #333399; font-weight: bold">int</span> med2 <span style="color: #333333">=</span> (l <span style="color: #333333">+</span> h) <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>;
+            <span style="color: #008800; font-weight: bold">for</span>(; l <span style="color: #333333">&lt;=</span> h; med2 <span style="color: #333333">=</span> (l <span style="color: #333333">+</span> h) <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>)
+            {
+                <span style="color: #008800; font-weight: bold">if</span>(matrix[med][med2] <span style="color: #333333">==</span> t)
+                {
+                    <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">true</span>;
+                }
+                <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span>(matrix[med][med2] <span style="color: #333333">&gt;</span> t)
+                {
+                    h <span style="color: #333333">=</span> med2 <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+                }
+                <span style="color: #008800; font-weight: bold">else</span>
+                {
+                    l <span style="color: #333333">=</span> med2 <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+                }
+            }
+        }
+        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">false</span>;
+    }
+};
+</pre></div>
+
+   </div>
+</body>
+</html>			
