@@ -60,34 +60,35 @@
 
     <div style="margin-left:10px;">
         <h1>
-            Two Sum
+            Two Sum 
         </h1>
-<pre style='color:#000000;background:#ffffff;'>class Solution 
-<span style='color:#800080; '>{</span>
-<span style='color:#e34adc; '>public:</span>
-    vector<span style='color:#808030; '>&lt;</span><span style='color:#800000; font-weight:bold; '>int</span><span style='color:#808030; '>></span> twoSum<span style='color:#808030; '>(</span>vector<span style='color:#808030; '>&lt;</span><span style='color:#800000; font-weight:bold; '>int</span><span style='color:#808030; '>></span> <span style='color:#808030; '>&amp;</span>numbers<span style='color:#808030; '>,</span> <span style='color:#800000; font-weight:bold; '>int</span> target<span style='color:#808030; '>)</span> 
-    <span style='color:#800080; '>{</span>
-        unordered_map<span style='color:#808030; '>&lt;</span><span style='color:#800000; font-weight:bold; '>int</span><span style='color:#808030; '>,</span> vector<span style='color:#808030; '>&lt;</span><span style='color:#800000; font-weight:bold; '>int</span><span style='color:#808030; '>></span><span style='color:#808030; '>></span> mp<span style='color:#800080; '>;</span>
-        <span style='color:#800000; font-weight:bold; '>for</span><span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>int</span> i <span style='color:#808030; '>=</span> <span style='color:#008c00; '>0</span><span style='color:#800080; '>;</span> i <span style='color:#808030; '>&lt;</span> numbers<span style='color:#808030; '>.</span>size<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span> <span style='color:#808030; '>+</span><span style='color:#808030; '>+</span>i<span style='color:#808030; '>)</span>
-        <span style='color:#800080; '>{</span>
-            mp<span style='color:#808030; '>[</span>numbers<span style='color:#808030; '>[</span>i<span style='color:#808030; '>]</span><span style='color:#808030; '>]</span><span style='color:#808030; '>.</span>push_back<span style='color:#808030; '>(</span>i <span style='color:#808030; '>+</span> <span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
-        <span style='color:#800080; '>}</span>
-        vector<span style='color:#808030; '>&lt;</span><span style='color:#800000; font-weight:bold; '>int</span><span style='color:#808030; '>></span> res<span style='color:#800080; '>;</span>
-        <span style='color:#800000; font-weight:bold; '>for</span><span style='color:#808030; '>(</span><span style='color:#800000; font-weight:bold; '>auto</span> <span style='color:#808030; '>&amp;</span> e <span style='color:#800080; '>:</span> mp<span style='color:#808030; '>)</span>
-        <span style='color:#800080; '>{</span>
-            <span style='color:#800000; font-weight:bold; '>auto</span> f <span style='color:#808030; '>=</span> target <span style='color:#808030; '>-</span> e<span style='color:#808030; '>.</span>first<span style='color:#800080; '>;</span>
-            <span style='color:#800000; font-weight:bold; '>if</span><span style='color:#808030; '>(</span>e<span style='color:#808030; '>.</span>first <span style='color:#808030; '>!</span><span style='color:#808030; '>=</span> f <span style='color:#808030; '>&amp;</span><span style='color:#808030; '>&amp;</span> mp<span style='color:#808030; '>.</span>find<span style='color:#808030; '>(</span>f<span style='color:#808030; '>)</span> <span style='color:#808030; '>!</span><span style='color:#808030; '>=</span> end<span style='color:#808030; '>(</span>mp<span style='color:#808030; '>)</span><span style='color:#808030; '>)</span>
-            <span style='color:#800080; '>{</span>
-                res<span style='color:#808030; '>.</span>push_back<span style='color:#808030; '>(</span><span style='color:#603000; '>min</span><span style='color:#808030; '>(</span>e<span style='color:#808030; '>.</span>second<span style='color:#808030; '>[</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>]</span><span style='color:#808030; '>,</span> mp<span style='color:#808030; '>[</span>f<span style='color:#808030; '>]</span><span style='color:#808030; '>[</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>]</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#808030; '>,</span> res<span style='color:#808030; '>.</span>push_back<span style='color:#808030; '>(</span><span style='color:#603000; '>max</span><span style='color:#808030; '>(</span>e<span style='color:#808030; '>.</span>second<span style='color:#808030; '>[</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>]</span><span style='color:#808030; '>,</span> mp<span style='color:#808030; '>[</span>f<span style='color:#808030; '>]</span><span style='color:#808030; '>[</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>]</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
-            <span style='color:#800080; '>}</span>
-            <span style='color:#800000; font-weight:bold; '>else</span> <span style='color:#800000; font-weight:bold; '>if</span><span style='color:#808030; '>(</span>e<span style='color:#808030; '>.</span>first <span style='color:#808030; '>=</span><span style='color:#808030; '>=</span> f <span style='color:#808030; '>&amp;</span><span style='color:#808030; '>&amp;</span> e<span style='color:#808030; '>.</span>second<span style='color:#808030; '>.</span>size<span style='color:#808030; '>(</span><span style='color:#808030; '>)</span> <span style='color:#808030; '>></span> <span style='color:#008c00; '>1</span><span style='color:#808030; '>)</span>
-            <span style='color:#800080; '>{</span>
-                res<span style='color:#808030; '>.</span>push_back<span style='color:#808030; '>(</span><span style='color:#603000; '>min</span><span style='color:#808030; '>(</span>e<span style='color:#808030; '>.</span>second<span style='color:#808030; '>[</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>]</span><span style='color:#808030; '>,</span> e<span style='color:#808030; '>.</span>second<span style='color:#808030; '>[</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>]</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#808030; '>,</span> res<span style='color:#808030; '>.</span>push_back<span style='color:#808030; '>(</span><span style='color:#603000; '>max</span><span style='color:#808030; '>(</span>e<span style='color:#808030; '>.</span>second<span style='color:#808030; '>[</span><span style='color:#008c00; '>0</span><span style='color:#808030; '>]</span><span style='color:#808030; '>,</span> e<span style='color:#808030; '>.</span>second<span style='color:#808030; '>[</span><span style='color:#008c00; '>1</span><span style='color:#808030; '>]</span><span style='color:#808030; '>)</span><span style='color:#808030; '>)</span><span style='color:#800080; '>;</span>
-            <span style='color:#800080; '>}</span>
-        <span style='color:#800080; '>}</span>
-        <span style='color:#800000; font-weight:bold; '>return</span> res<span style='color:#800080; '>;</span>
-    <span style='color:#800080; '>}</span>
-<span style='color:#800080; '>}</span><span style='color:#800080; '>;</span>
-</pre>    </div>
+		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;padding:.1em .3em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span> {
+<span style="color: #997700; font-weight: bold">public:</span>
+    vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> twoSum(vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> <span style="color: #333333">&amp;</span>numbers, <span style="color: #333399; font-weight: bold">int</span> target) 
+    {
+        unordered_map<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span>, vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;&gt;</span> mp;
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> numbers.size(); <span style="color: #333333">++</span>i)
+        {
+            mp[numbers[i]].push_back(i <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>);
+        }
+        vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> res;
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #008800; font-weight: bold">auto</span> <span style="color: #333333">&amp;</span> e <span style="color: #333333">:</span> mp)
+        {
+            <span style="color: #008800; font-weight: bold">auto</span> f <span style="color: #333333">=</span> target <span style="color: #333333">-</span> e.first;
+            <span style="color: #008800; font-weight: bold">if</span>(e.first <span style="color: #333333">!=</span> f <span style="color: #333333">&amp;&amp;</span> mp.find(f) <span style="color: #333333">!=</span> end(mp))
+            {
+                res.push_back(min(e.second[<span style="color: #0000DD; font-weight: bold">0</span>], mp[f][<span style="color: #0000DD; font-weight: bold">0</span>])), res.push_back(max(e.second[<span style="color: #0000DD; font-weight: bold">0</span>], mp[f][<span style="color: #0000DD; font-weight: bold">0</span>]));
+            }
+            <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span>(e.first <span style="color: #333333">==</span> f <span style="color: #333333">&amp;&amp;</span> e.second.size() <span style="color: #333333">&gt;</span> <span style="color: #0000DD; font-weight: bold">1</span>)
+            {
+                res.push_back(min(e.second[<span style="color: #0000DD; font-weight: bold">0</span>], e.second[<span style="color: #0000DD; font-weight: bold">1</span>])), res.push_back(max(e.second[<span style="color: #0000DD; font-weight: bold">0</span>], e.second[<span style="color: #0000DD; font-weight: bold">1</span>]));
+            }
+        }
+        <span style="color: #008800; font-weight: bold">return</span> res;
+    }
+};
+</pre></div>
+
+   </div>
 </body>
 </html>			

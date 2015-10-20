@@ -2,19 +2,12 @@
   "name": "upresent",
   "version": "0.0.0",
   "private": true,
-  "scripts": {
-    "start": "node ./bin/www"
-  },
   "description": "upresent",
   "author": {
     "name": "qjwu9_000",
     "email": ""
   },
   "dependencies": {
-    "express": "~4.9.0",
-    "jade": "~1.6.0",
-    "morgan": "~1.3.0",
-    "reveal.js": "^3.1.0",
-    "serve-favicon": "~2.1.3"
+    "express": "^4.13.3"
   }
 }

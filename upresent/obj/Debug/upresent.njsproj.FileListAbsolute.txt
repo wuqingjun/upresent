@@ -1,0 +1,2 @@
+C:\Users\ek2zqun\Source\Repos\upresent\upresent\obj\Debug\upresent.njsprojResolveAssemblyReference.cache
+C:\Users\ek2zqun\Source\Repos\upresent\upresent\bin\Microsoft.NodejsTools.WebRole.dll
