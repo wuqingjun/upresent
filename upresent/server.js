@@ -53,6 +53,11 @@ function checkQuestionId(questionid) {
     return questionid;
 }
 
+app.get('/', function (req, res) {
+    res.writeHead(200, { 'Content-Type': 'text/plain' });
+    res.end('U Presents\n');
+});
+
 app.get('/fastleet/', function (req, res) {
     res.sendFile('index.html', { root: __dirname + '/public/fastleet' });
 });
@@ -75,7 +80,7 @@ app.get('/fastleet/:questionid/:command', function (req, res) {
     res.sendFile(questionHtml, { root: __dirname + '/public/fastleet' });
 });
 
-var server = app.listen(3000, function () {
+var server = app.listen(1337, function () {
     var host = server.address().address;
     var port = server.address().port;
     

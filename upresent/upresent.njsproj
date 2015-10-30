@@ -33,6 +33,7 @@
   <ItemGroup>
     <Compile Include="public\javascripts\checkKey.js" />
     <Compile Include="server.js" />
+    <Content Include="IISNode.yml" />
     <Content Include="package.json" />
     <Content Include="public\fastleet\1.question.html" />
     <Content Include="public\fastleet\100.question.html" />
