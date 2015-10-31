@@ -5,7 +5,7 @@
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
     <Name>upresent.azure</Name>
     <RootNamespace>upresent.azure</RootNamespace>
-    <NameOfLastUsedPublishProfile>youpresent</NameOfLastUsedPublishProfile>
+    <NameOfLastUsedPublishProfile>upresent</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -39,7 +39,6 @@
     <Content Include="package.json" />
     <Content Include="public\stylesheets\style.styl" />
     <Content Include="README.md" />
-    <None Include="youpresent.pubxml" />
     <None Include="upresent.pubxml" />
     <Content Include="views\index.jade" />
     <Content Include="views\layout.jade" />
