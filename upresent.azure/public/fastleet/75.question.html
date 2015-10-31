@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        $(document).on("pagecreate","#pageone",function(){
+          $("p").on("swipe",function(){
+            $(this).hide();
+          });
+        });
+    </script>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+    <style>
+html { font-size: 62.5%; }
+body { font-size: 1em;}
+
+@media (max-width: 300px) {
+    html { font-size: 70%; }
+}
+
+@media (min-width: 414px) {
+    html { font-size: 75%; }
+}
+
+@media (min-width: 500px) {
+    html { font-size: 80%; }
+}
+
+@media (min-width: 700px) {
+    html { font-size: 120%; }
+}
+
+@media (min-width: 1200px) {
+    html { font-size: 200%; }
+}
+    </style>
+</head>
+<body>
+
+<div style="margin-left:10px; ">
+    <h1>
+        Sort Colors 
+    </h1>
+	<p></p><p>Given an array with n objects colored red, white or blue, sort them so that objects of the same color are adjacent, with the colors in the order red, white and blue. </p><p>Here, we will use the integers 0, 1, and 2 to represent the color red, white, and blue respectively. </p><p>Note:
+ You are not suppose to use the library's sort function for this problem. </p><p>click to show follow up.</p><p>Follow up:
+A rather straight forward solution is a two-pass algorithm using counting sort.
+First, iterate the array counting number of 0's, 1's, and 2's, then overwrite array with total number of 0's, then 1's and followed by 2's.</p><p>Could you come up with an one-pass algorithm using only constant space?</p><p></p>
+</div>
+
+</body>
+</html>

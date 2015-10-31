@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        $(document).on("pagecreate","#pageone",function(){
+          $("p").on("swipe",function(){
+            $(this).hide();
+          });
+        });
+    </script>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            font-size: 1em;
+        }
+
+        @media (max-width: 300px) {
+            html {
+                font-size: 70%;
+            }
+        }
+
+        @media (min-width: 414px) {
+            html {
+                font-size: 75%;
+            }
+        }
+
+        @media (min-width: 500px) {
+            html {
+                font-size: 80%;
+            }
+        }
+
+        @media (min-width: 700px) {
+            html {
+                font-size: 120%;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            html {
+                font-size: 200%;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+</head>
+<body>
+
+    <div style="margin-left:10px;">
+        <h1>
+            Longest Palindromic Substring 
+        </h1>
+		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;padding:.1em .3em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span> {
+<span style="color: #997700; font-weight: bold">public:</span>
+    string longestPalindrome(string s)
+    {
+        string t(<span style="background-color: #fff0f0">&quot;#&quot;</span>), res;
+        <span style="color: #008800; font-weight: bold">for</span> (<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> s.size(); <span style="color: #333333">++</span>i)
+        {
+            t.append(<span style="color: #0000DD; font-weight: bold">1</span>, s[i]), t.append(<span style="color: #0000DD; font-weight: bold">1</span>, <span style="color: #0044DD">&#39;#&#39;</span>);
+        }
+        <span style="color: #333399; font-weight: bold">int</span> id <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>, mx <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>, ml <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>, center <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+        vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> p(t.size(), <span style="color: #0000DD; font-weight: bold">0</span>);
+        <span style="color: #008800; font-weight: bold">for</span> (<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> t.size(); <span style="color: #333333">++</span>i)
+        {
+            p[i] <span style="color: #333333">=</span> i <span style="color: #333333">&lt;</span> mx <span style="color: #333333">?</span> min(p[<span style="color: #0000DD; font-weight: bold">2</span> <span style="color: #333333">*</span> id <span style="color: #333333">-</span> i], mx <span style="color: #333333">-</span> i) <span style="color: #333333">:</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+            <span style="color: #008800; font-weight: bold">while</span> (i <span style="color: #333333">+</span> p[i] <span style="color: #333333">&lt;</span> t.size() <span style="color: #333333">&amp;&amp;</span> i <span style="color: #333333">&gt;=</span> p[i] <span style="color: #333333">&amp;&amp;</span> t[i <span style="color: #333333">+</span> p[i]] <span style="color: #333333">==</span> t[i <span style="color: #333333">-</span> p[i]]) { <span style="color: #333333">++</span>p[i]; }
+            <span style="color: #008800; font-weight: bold">if</span> (i <span style="color: #333333">+</span> p[i] <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span> <span style="color: #333333">&gt;</span> mx)
+            {
+                id <span style="color: #333333">=</span> i;
+                mx <span style="color: #333333">=</span> i <span style="color: #333333">+</span> p[i] <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>;
+            }
+            <span style="color: #008800; font-weight: bold">if</span> (p[i] <span style="color: #333333">&gt;</span> ml)
+            {
+                ml <span style="color: #333333">=</span> p[i];
+                center <span style="color: #333333">=</span> i;
+            }
+        }
+        <span style="color: #008800; font-weight: bold">for</span> (<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> center <span style="color: #333333">-</span> p[center] <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>; i <span style="color: #333333">&lt;=</span> center <span style="color: #333333">+</span> p[center] <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>; <span style="color: #333333">++</span>i)
+        {
+            <span style="color: #008800; font-weight: bold">if</span> (<span style="color: #0044DD">&#39;#&#39;</span> <span style="color: #333333">!=</span> t[i])
+            {
+                res.append(<span style="color: #0000DD; font-weight: bold">1</span>, t[i]);
+            }
+        }
+        <span style="color: #008800; font-weight: bold">return</span> res;
+    }
+};
+</pre></div>
+
+   </div>
+</body>
+</html>			

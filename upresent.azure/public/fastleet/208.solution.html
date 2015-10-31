@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        $(document).on("pagecreate","#pageone",function(){
+          $("p").on("swipe",function(){
+            $(this).hide();
+          });
+        });
+    </script>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            font-size: 1em;
+        }
+
+        @media (max-width: 300px) {
+            html {
+                font-size: 70%;
+            }
+        }
+
+        @media (min-width: 414px) {
+            html {
+                font-size: 75%;
+            }
+        }
+
+        @media (min-width: 500px) {
+            html {
+                font-size: 80%;
+            }
+        }
+
+        @media (min-width: 700px) {
+            html {
+                font-size: 120%;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            html {
+                font-size: 200%;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+</head>
+<body>
+
+    <div style="margin-left:10px;">
+        <h1>
+            Implement Trie (Prefix Tree) 
+        </h1>
+		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;padding:.1em .3em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">TrieNode</span>
+{
+<span style="color: #997700; font-weight: bold">public:</span>
+    <span style="color: #888888">// Initialize your data structure here.</span>
+    TrieNode(<span style="color: #333399; font-weight: bold">char</span> c) <span style="color: #333333">:</span> ch(c), end(<span style="color: #007020">false</span>) { }
+<span style="color: #997700; font-weight: bold">public:</span>
+    <span style="color: #333399; font-weight: bold">char</span> ch;
+    <span style="color: #333399; font-weight: bold">bool</span> end;
+    unordered_map<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">char</span>, TrieNode <span style="color: #333333">*&gt;</span> nodes;
+};
+
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Trie</span> {
+<span style="color: #997700; font-weight: bold">public:</span>
+    Trie() <span style="color: #333333">:</span> root(<span style="color: #008800; font-weight: bold">new</span> TrieNode(<span style="color: #0044DD">&#39;\0&#39;</span>)) { }
+
+    <span style="color: #888888">// Inserts a word into the trie.</span>
+    <span style="color: #333399; font-weight: bold">void</span> insert(string s)
+    {
+        <span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+        TrieNode <span style="color: #333333">*</span>p <span style="color: #333333">=</span> helper(s, i);
+        <span style="color: #008800; font-weight: bold">for</span> (; i <span style="color: #333333">&lt;</span> s.size(); <span style="color: #333333">++</span>i)
+        {
+            <span style="color: #008800; font-weight: bold">auto</span> t <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> TrieNode(s[i]);
+            p<span style="color: #333333">-&gt;</span>nodes[s[i]] <span style="color: #333333">=</span> t;
+            p <span style="color: #333333">=</span> t;
+        }
+        p<span style="color: #333333">-&gt;</span>end <span style="color: #333333">=</span> <span style="color: #007020">true</span>;
+    }
+
+    <span style="color: #888888">// Returns if the word is in the trie.</span>
+    <span style="color: #333399; font-weight: bold">bool</span> search(string key)
+    {
+        <span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+        TrieNode <span style="color: #333333">*</span>p <span style="color: #333333">=</span> helper(key, i);
+        <span style="color: #008800; font-weight: bold">return</span> i <span style="color: #333333">==</span> key.size() <span style="color: #333333">&amp;&amp;</span> p<span style="color: #333333">-&gt;</span>end;
+    }
+
+    <span style="color: #888888">// Returns if there is any word in the trie</span>
+    <span style="color: #888888">// that starts with the given prefix.</span>
+    <span style="color: #333399; font-weight: bold">bool</span> startsWith(string prefix)
+    {
+        <span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+        TrieNode <span style="color: #333333">*</span>p <span style="color: #333333">=</span> helper(prefix, i);
+        <span style="color: #008800; font-weight: bold">return</span> i <span style="color: #333333">==</span> prefix.size();
+    }
+
+<span style="color: #997700; font-weight: bold">private:</span>
+    TrieNode <span style="color: #333333">*</span> helper(string s, <span style="color: #333399; font-weight: bold">int</span> <span style="color: #333333">&amp;</span>i)
+    {
+        i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+        TrieNode <span style="color: #333333">*</span>p <span style="color: #333333">=</span> root;
+        <span style="color: #008800; font-weight: bold">for</span> (; i <span style="color: #333333">&lt;</span> s.size() <span style="color: #333333">&amp;&amp;</span> p<span style="color: #333333">-&gt;</span>nodes.find(s[i]) <span style="color: #333333">!=</span> end(p<span style="color: #333333">-&gt;</span>nodes); <span style="color: #333333">++</span>i)
+        {
+            p <span style="color: #333333">=</span> p<span style="color: #333333">-&gt;</span>nodes[s[i]];
+        }
+        <span style="color: #008800; font-weight: bold">return</span> p;
+    }
+
+<span style="color: #997700; font-weight: bold">private:</span>
+    TrieNode<span style="color: #333333">*</span> root;
+};
+</pre></div>
+
+   </div>
+</body>
+</html>			

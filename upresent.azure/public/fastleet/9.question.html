@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        $(document).on("pagecreate","#pageone",function(){
+          $("p").on("swipe",function(){
+            $(this).hide();
+          });
+        });
+    </script>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+    <style>
+html { font-size: 62.5%; }
+body { font-size: 1em;}
+
+@media (max-width: 300px) {
+    html { font-size: 70%; }
+}
+
+@media (min-width: 414px) {
+    html { font-size: 75%; }
+}
+
+@media (min-width: 500px) {
+    html { font-size: 80%; }
+}
+
+@media (min-width: 700px) {
+    html { font-size: 120%; }
+}
+
+@media (min-width: 1200px) {
+    html { font-size: 200%; }
+}
+    </style>
+</head>
+<body>
+
+<div style="margin-left:10px; ">
+    <h1>
+        Palindrome Number 
+    </h1>
+	<p></p><p>Determine whether an integer is a palindrome. Do this without extra space.</p><p>click to show spoilers.</p><p>Could negative integers be palindromes? (ie, -1)</p><p>If you are thinking of converting the integer to string, note the restriction of using extra space.</p><p>You could also try reversing an integer. However, if you have solved the problem "Reverse Integer", you know that the reversed integer might overflow. How would you handle such case?</p><p>There is a more generic way of solving this problem.</p><p></p>
+</div>
+
+</body>
+</html>

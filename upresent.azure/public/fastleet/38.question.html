@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        $(document).on("pagecreate","#pageone",function(){
+          $("p").on("swipe",function(){
+            $(this).hide();
+          });
+        });
+    </script>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+    <style>
+html { font-size: 62.5%; }
+body { font-size: 1em;}
+
+@media (max-width: 300px) {
+    html { font-size: 70%; }
+}
+
+@media (min-width: 414px) {
+    html { font-size: 75%; }
+}
+
+@media (min-width: 500px) {
+    html { font-size: 80%; }
+}
+
+@media (min-width: 700px) {
+    html { font-size: 120%; }
+}
+
+@media (min-width: 1200px) {
+    html { font-size: 200%; }
+}
+    </style>
+</head>
+<body>
+
+<div style="margin-left:10px; ">
+    <h1>
+        Count and Say 
+    </h1>
+	<p></p><p>The count-and-say sequence is the sequence of integers beginning as follows:
+1, 11, 21, 1211, 111221, ... </p><p>1 is read off as "one 1" or 11.
+11 is read off as "two 1s" or 21.
+21 is read off as "one 2, then one 1" or 1211.</p><p>Given an integer n, generate the nth sequence. </p><p>Note: The sequence of integers will be represented as a string. </p><p></p>
+</div>
+
+</body>
+</html>

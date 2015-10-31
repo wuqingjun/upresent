@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        $(document).on("pagecreate","#pageone",function(){
+          $("p").on("swipe",function(){
+            $(this).hide();
+          });
+        });
+    </script>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            font-size: 1em;
+        }
+
+        @media (max-width: 300px) {
+            html {
+                font-size: 70%;
+            }
+        }
+
+        @media (min-width: 414px) {
+            html {
+                font-size: 75%;
+            }
+        }
+
+        @media (min-width: 500px) {
+            html {
+                font-size: 80%;
+            }
+        }
+
+        @media (min-width: 700px) {
+            html {
+                font-size: 120%;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            html {
+                font-size: 200%;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+</head>
+<body>
+
+    <div style="margin-left:10px;">
+        <h1>
+            Combination Sum II 
+        </h1>
+		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;padding:.1em .3em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span> {
+<span style="color: #997700; font-weight: bold">public:</span>
+    vector<span style="color: #333333">&lt;</span>vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> <span style="color: #333333">&gt;</span> combinationSum2(vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> <span style="color: #333333">&amp;</span>candidates, <span style="color: #333399; font-weight: bold">int</span> target) 
+    {
+        sort(begin(candidates), end(candidates));
+        vector<span style="color: #333333">&lt;</span> vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> <span style="color: #333333">&gt;</span> res;
+        set<span style="color: #333333">&lt;</span>vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> <span style="color: #333333">&gt;</span> s;
+        map<span style="color: #333333">&lt;</span>vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span>, <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> mp;
+        rec(candidates, candidates.size() <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>, target, s, mp);
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #008800; font-weight: bold">auto</span> <span style="color: #333333">&amp;</span> e <span style="color: #333333">:</span> s) {res.push_back(e);}
+        <span style="color: #008800; font-weight: bold">return</span> res;
+    }
+    <span style="color: #333399; font-weight: bold">void</span> rec(vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> <span style="color: #333333">&amp;</span>candidates, <span style="color: #333399; font-weight: bold">int</span> i, <span style="color: #333399; font-weight: bold">int</span> t, set<span style="color: #333333">&lt;</span>vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> <span style="color: #333333">&gt;</span> <span style="color: #333333">&amp;</span> s, map<span style="color: #333333">&lt;</span>vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span>, <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> <span style="color: #333333">&amp;</span>mp)
+    {
+        <span style="color: #008800; font-weight: bold">if</span>(i <span style="color: #333333">==</span> <span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>)
+        {
+            mp[vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span>()] <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+        }
+        <span style="color: #008800; font-weight: bold">else</span>
+        {
+            rec(candidates, i <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>, t, s, mp);
+            map<span style="color: #333333">&lt;</span>vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span>, <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> temp(mp);
+            <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #008800; font-weight: bold">auto</span> <span style="color: #333333">&amp;</span>e<span style="color: #333333">:</span> temp)
+            {
+                vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> v(e.first);
+                v.push_back(candidates[i]);
+                <span style="color: #008800; font-weight: bold">if</span>(e.second <span style="color: #333333">+</span>  candidates[i] <span style="color: #333333">==</span> t)
+                {
+                    s.insert(v);
+                }
+                <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span>(e.second <span style="color: #333333">+</span> candidates[i]<span style="color: #333333">&lt;</span> t)
+                {
+                    mp[v] <span style="color: #333333">=</span> e.second <span style="color: #333333">+</span> candidates[i];
+                }
+            }
+        }
+    }    
+};
+</pre></div>
+
+   </div>
+</body>
+</html>			

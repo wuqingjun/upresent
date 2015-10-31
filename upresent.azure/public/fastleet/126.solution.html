@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        $(document).on("pagecreate","#pageone",function(){
+          $("p").on("swipe",function(){
+            $(this).hide();
+          });
+        });
+    </script>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            font-size: 1em;
+        }
+
+        @media (max-width: 300px) {
+            html {
+                font-size: 70%;
+            }
+        }
+
+        @media (min-width: 414px) {
+            html {
+                font-size: 75%;
+            }
+        }
+
+        @media (min-width: 500px) {
+            html {
+                font-size: 80%;
+            }
+        }
+
+        @media (min-width: 700px) {
+            html {
+                font-size: 120%;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            html {
+                font-size: 200%;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+</head>
+<body>
+
+    <div style="margin-left:10px;">
+        <h1>
+            Word Ladder II 
+        </h1>
+		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;padding:.1em .3em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span> {
+<span style="color: #997700; font-weight: bold">public:</span>
+    vector<span style="color: #333333">&lt;</span>vector<span style="color: #333333">&lt;</span>string<span style="color: #333333">&gt;&gt;</span> findLadders(string start, string end, unordered_set<span style="color: #333333">&lt;</span>string<span style="color: #333333">&gt;</span> <span style="color: #333333">&amp;</span>dict)
+    {
+        unordered_map<span style="color: #333333">&lt;</span>string, vector<span style="color: #333333">&lt;</span>string<span style="color: #333333">&gt;</span> <span style="color: #333333">&gt;</span> adj;
+        unordered_set<span style="color: #333333">&lt;</span>string<span style="color: #333333">&gt;</span> que[<span style="color: #0000DD; font-weight: bold">2</span>];
+        que[<span style="color: #0000DD; font-weight: bold">0</span>].insert(start);
+        unordered_map<span style="color: #333333">&lt;</span>string, <span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> visited;
+        visited[start] <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+
+        <span style="color: #333399; font-weight: bold">bool</span> found <span style="color: #333333">=</span> <span style="color: #007020">false</span>;
+        <span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>;
+        <span style="color: #008800; font-weight: bold">for</span> (; <span style="color: #333333">!</span>found <span style="color: #333333">&amp;&amp;</span> <span style="color: #333333">!</span>que[i <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span>].empty(); <span style="color: #333333">++</span>i)
+        {
+            <span style="color: #008800; font-weight: bold">for</span> (string s; <span style="color: #333333">!</span>que[i <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span>].empty(); que[i <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span>].erase(s))
+            {
+                s <span style="color: #333333">=</span> <span style="color: #333333">*</span>que[i <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span>].begin();
+                <span style="color: #008800; font-weight: bold">if</span> (s <span style="color: #333333">==</span> end)
+                {
+                    found <span style="color: #333333">=</span> <span style="color: #007020">true</span>;
+                }
+                <span style="color: #008800; font-weight: bold">for</span> (<span style="color: #333399; font-weight: bold">int</span> n <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; n <span style="color: #333333">&lt;</span> s.size(); <span style="color: #333333">++</span>n)
+                {
+                    string t <span style="color: #333333">=</span> s;
+                    <span style="color: #008800; font-weight: bold">for</span> (<span style="color: #333399; font-weight: bold">int</span> k <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; k <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">26</span>; <span style="color: #333333">++</span>k)
+                    {
+                        t[n] <span style="color: #333333">=</span> <span style="color: #0044DD">&#39;a&#39;</span> <span style="color: #333333">+</span> k;
+                        <span style="color: #008800; font-weight: bold">if</span> (dict.find(t) <span style="color: #333333">!=</span> dict.end() <span style="color: #333333">&amp;&amp;</span> (visited.find(t) <span style="color: #333333">==</span> visited.end() <span style="color: #333333">||</span> visited[t] <span style="color: #333333">&gt;=</span> i))
+                        {
+                            adj[t].push_back(s);
+                            que[(i <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>) <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span>].insert(t);
+                            visited[t] <span style="color: #333333">=</span> i;
+                        }
+                    }
+                }
+            }
+        }
+        vector<span style="color: #333333">&lt;</span>vector<span style="color: #333333">&lt;</span>string<span style="color: #333333">&gt;</span> <span style="color: #333333">&gt;</span> res;
+        vector<span style="color: #333333">&lt;</span>string<span style="color: #333333">&gt;</span> path(<span style="color: #0000DD; font-weight: bold">1</span>, end);
+        bt(path, adj, res, start, i);
+        <span style="color: #008800; font-weight: bold">return</span> res;
+    }
+
+    <span style="color: #333399; font-weight: bold">void</span> bt(vector<span style="color: #333333">&lt;</span>string<span style="color: #333333">&gt;</span> <span style="color: #333333">&amp;</span>path, unordered_map<span style="color: #333333">&lt;</span>string, vector<span style="color: #333333">&lt;</span>string<span style="color: #333333">&gt;</span> <span style="color: #333333">&gt;</span> <span style="color: #333333">&amp;</span>adj, vector<span style="color: #333333">&lt;</span>vector<span style="color: #333333">&lt;</span>string<span style="color: #333333">&gt;</span> <span style="color: #333333">&gt;</span> <span style="color: #333333">&amp;</span>res, string <span style="color: #333333">&amp;</span>start, <span style="color: #333399; font-weight: bold">int</span> currLen)
+    {
+        <span style="color: #008800; font-weight: bold">if</span> (path.front() <span style="color: #333333">==</span> start)
+        {
+            res.push_back(path);
+        }
+        <span style="color: #008800; font-weight: bold">else</span>
+        {
+            <span style="color: #008800; font-weight: bold">for</span> (<span style="color: #008800; font-weight: bold">auto</span> <span style="color: #333333">&amp;</span> e <span style="color: #333333">:</span> adj[path.front()])
+            {
+                path.insert(begin(path), e);
+
+                bt(path, adj, res, start, currLen <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>);
+
+                path.erase(begin(path));
+            }
+        }
+    }
+};
+</pre></div>
+
+   </div>
+</body>
+</html>			

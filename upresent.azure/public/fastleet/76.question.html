@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        $(document).on("pagecreate","#pageone",function(){
+          $("p").on("swipe",function(){
+            $(this).hide();
+          });
+        });
+    </script>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+    <style>
+html { font-size: 62.5%; }
+body { font-size: 1em;}
+
+@media (max-width: 300px) {
+    html { font-size: 70%; }
+}
+
+@media (min-width: 414px) {
+    html { font-size: 75%; }
+}
+
+@media (min-width: 500px) {
+    html { font-size: 80%; }
+}
+
+@media (min-width: 700px) {
+    html { font-size: 120%; }
+}
+
+@media (min-width: 1200px) {
+    html { font-size: 200%; }
+}
+    </style>
+</head>
+<body>
+
+<div style="margin-left:10px; ">
+    <h1>
+        Minimum Window Substring 
+    </h1>
+	<p></p><p>Given a string S and a string T, find the minimum window in S which will contain all the characters in T in complexity O(n). </p><p>For example,
+S = "ADOBECODEBANC"
+T = "ABC"</p><p>Minimum window is "BANC". </p><p>Note:
+ If there is no such window in S that covers all characters in T, return the empty string "". </p><p>If there are multiple such windows, you are guaranteed that there will always be only one unique minimum window in S. </p><p></p>
+</div>
+
+</body>
+</html>

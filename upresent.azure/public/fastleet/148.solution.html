@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        $(document).on("pagecreate","#pageone",function(){
+          $("p").on("swipe",function(){
+            $(this).hide();
+          });
+        });
+    </script>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            font-size: 1em;
+        }
+
+        @media (max-width: 300px) {
+            html {
+                font-size: 70%;
+            }
+        }
+
+        @media (min-width: 414px) {
+            html {
+                font-size: 75%;
+            }
+        }
+
+        @media (min-width: 500px) {
+            html {
+                font-size: 80%;
+            }
+        }
+
+        @media (min-width: 700px) {
+            html {
+                font-size: 120%;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            html {
+                font-size: 200%;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+</head>
+<body>
+
+    <div style="margin-left:10px;">
+        <h1>
+            Sort List 
+        </h1>
+		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;padding:.1em .3em;"><pre style="margin: 0; line-height: 125%"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span> {
+<span style="color: #997700; font-weight: bold">public:</span>
+    ListNode <span style="color: #333333">*</span>sortList(ListNode <span style="color: #333333">*</span>head) 
+    {
+        <span style="color: #008800; font-weight: bold">if</span>(head <span style="color: #333333">&amp;&amp;</span> head<span style="color: #333333">-&gt;</span>next)
+        {
+            ListNode <span style="color: #333333">*</span>h2 <span style="color: #333333">=</span> divide(head);
+            ListNode <span style="color: #333333">*</span>h1 <span style="color: #333333">=</span> sortList(head);
+            h2 <span style="color: #333333">=</span> sortList(h2);
+            head <span style="color: #333333">=</span> merge(h1, h2);
+        }
+        <span style="color: #008800; font-weight: bold">return</span> head;
+    }
+    
+    ListNode <span style="color: #333333">*</span>divide(ListNode <span style="color: #333333">*</span>h)
+    {
+        ListNode <span style="color: #333333">*</span>p1 <span style="color: #333333">=</span> h, <span style="color: #333333">*</span>p2 <span style="color: #333333">=</span> h<span style="color: #333333">-&gt;</span>next, <span style="color: #333333">*</span>h2 <span style="color: #333333">=</span> <span style="color: #007020">NULL</span>;
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; p2 <span style="color: #333333">&amp;&amp;</span> p2<span style="color: #333333">-&gt;</span>next; i <span style="color: #333333">=</span> (i <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>) <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span>, p2 <span style="color: #333333">=</span> p2<span style="color: #333333">-&gt;</span>next)
+        {
+            <span style="color: #008800; font-weight: bold">if</span>(i) 
+            {
+                p1 <span style="color: #333333">=</span> p1<span style="color: #333333">-&gt;</span>next;
+            }
+        }
+        h2 <span style="color: #333333">=</span> p1<span style="color: #333333">-&gt;</span>next, p1<span style="color: #333333">-&gt;</span>next <span style="color: #333333">=</span> <span style="color: #007020">NULL</span>;
+        <span style="color: #008800; font-weight: bold">return</span> h2;
+    }
+    
+    ListNode <span style="color: #333333">*</span> merge(ListNode <span style="color: #333333">*</span> h1, ListNode <span style="color: #333333">*</span>h2)
+    {
+        ListNode <span style="color: #333333">*</span>h <span style="color: #333333">=</span> <span style="color: #007020">NULL</span>, <span style="color: #333333">*</span>last <span style="color: #333333">=</span> <span style="color: #007020">NULL</span>;
+        <span style="color: #008800; font-weight: bold">while</span>(h1 <span style="color: #333333">||</span> h2)
+        {
+            ListNode <span style="color: #333333">*&amp;</span> r <span style="color: #333333">=</span> (<span style="color: #333333">!</span>h2 <span style="color: #333333">||</span> (h1 <span style="color: #333333">&amp;&amp;</span> h2 <span style="color: #333333">&amp;&amp;</span> h1<span style="color: #333333">-&gt;</span>val <span style="color: #333333">&lt;</span> h2<span style="color: #333333">-&gt;</span>val)) <span style="color: #333333">?</span> h1 <span style="color: #333333">:</span> h2;
+            <span style="color: #008800; font-weight: bold">if</span>(last)
+            {
+                last<span style="color: #333333">-&gt;</span>next <span style="color: #333333">=</span> r;
+            }
+            <span style="color: #008800; font-weight: bold">else</span>
+            {
+                h <span style="color: #333333">=</span> r;
+            }
+            last <span style="color: #333333">=</span> r, r <span style="color: #333333">=</span> r<span style="color: #333333">-&gt;</span>next;
+        }
+        <span style="color: #008800; font-weight: bold">return</span> h;
+    }
+};
+</pre></div>
+
+   </div>
+</body>
+</html>			

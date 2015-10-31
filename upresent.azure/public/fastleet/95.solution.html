@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css">
+    <script src="http://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        $(document).on("pagecreate","#pageone",function(){
+          $("p").on("swipe",function(){
+            $(this).hide();
+          });
+        });
+    </script>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+    <style>
+        html {
+            font-size: 62.5%;
+        }
+
+        body {
+            font-size: 1em;
+        }
+
+        @media (max-width: 300px) {
+            html {
+                font-size: 70%;
+            }
+        }
+
+        @media (min-width: 414px) {
+            html {
+                font-size: 75%;
+            }
+        }
+
+        @media (min-width: 500px) {
+            html {
+                font-size: 80%;
+            }
+        }
+
+        @media (min-width: 700px) {
+            html {
+                font-size: 120%;
+            }
+        }
+
+        @media (min-width: 1200px) {
+            html {
+                font-size: 200%;
+            }
+        }
+    </style>
+    <script type="text/javascript" src="/javascripts/checkKey.js"></script>
+    <title></title>
+</head>
+<body>
+
+    <div style="margin-left:10px;">
+        <h1>
+            Unique Binary Search Trees II 
+        </h1>
+		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;padding:.1em .3em;"><pre style="margin: 0; line-height: 125%"><span style="color: #888888">/**</span>
+<span style="color: #888888"> * Definition for binary tree</span>
+<span style="color: #888888"> * struct TreeNode {</span>
+<span style="color: #888888"> *     int val;</span>
+<span style="color: #888888"> *     TreeNode *left;</span>
+<span style="color: #888888"> *     TreeNode *right;</span>
+<span style="color: #888888"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}</span>
+<span style="color: #888888"> * };</span>
+<span style="color: #888888"> */</span>
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span> {
+<span style="color: #997700; font-weight: bold">public:</span>
+    vector<span style="color: #333333">&lt;</span>TreeNode <span style="color: #333333">*&gt;</span> generateTrees(<span style="color: #333399; font-weight: bold">int</span> n) 
+    {
+        <span style="color: #008800; font-weight: bold">return</span> n <span style="color: #333333">?</span> rec(<span style="color: #0000DD; font-weight: bold">1</span>, n) <span style="color: #333333">:</span> vector<span style="color: #333333">&lt;</span>TreeNode <span style="color: #333333">*&gt;</span>(<span style="color: #0000DD; font-weight: bold">1</span>);
+    }
+    
+    vector<span style="color: #333333">&lt;</span>TreeNode <span style="color: #333333">*</span> <span style="color: #333333">&gt;</span> rec(<span style="color: #333399; font-weight: bold">int</span> s, <span style="color: #333399; font-weight: bold">int</span> e)
+    {
+        vector<span style="color: #333333">&lt;</span>TreeNode <span style="color: #333333">*&gt;</span> res;
+        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> s; i <span style="color: #333333">&lt;=</span> e; <span style="color: #333333">++</span>i)
+        {
+            <span style="color: #008800; font-weight: bold">auto</span> vl <span style="color: #333333">=</span> rec(s, i <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>), vr <span style="color: #333333">=</span> rec(i <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>, e);
+            <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> m <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; <span style="color: #333333">!</span>m <span style="color: #333333">||</span> m <span style="color: #333333">&lt;</span> vl.size(); <span style="color: #333333">++</span>m)
+            {
+                <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> n <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; <span style="color: #333333">!</span>n <span style="color: #333333">||</span> n <span style="color: #333333">&lt;</span> vr.size(); <span style="color: #333333">++</span>n)
+                {
+                    <span style="color: #008800; font-weight: bold">auto</span> p <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> TreeNode(i);
+                    p<span style="color: #333333">-&gt;</span>left <span style="color: #333333">=</span> m <span style="color: #333333">&lt;</span> vl.size() <span style="color: #333333">?</span> vl[m] <span style="color: #333333">:</span> <span style="color: #007020">NULL</span>;
+                    p<span style="color: #333333">-&gt;</span>right <span style="color: #333333">=</span> n <span style="color: #333333">&lt;</span> vr.size() <span style="color: #333333">?</span> vr[n] <span style="color: #333333">:</span> <span style="color: #007020">NULL</span>;
+                    res.push_back(p);
+                }
+            }
+        }
+        <span style="color: #008800; font-weight: bold">return</span> res;
+    }
+};
+</pre></div>
+
+   </div>
+</body>
+</html>			
