@@ -37,9 +37,29 @@ function checkKey(e) {
                 up = fastleet;
                 down = fastleet;
             }
-        
+            
             var keyHandler = { '37': prev, '38': up, '39': next, '40': down };
-            window.location.pathname = keyHandler[e.keyCode];
+
+        
+
+            if (e.keyCode == '40') {
+                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
+                    window.location.pathname = keyHandler[e.keyCode];
+                } else {
+                    window.scrollBy(0, 3);    
+                }
+            }
+            else if (e.keyCode == '39') {
+                if ((window.innerWidth + window.scrollX) >= document.body.offsetWidth) {
+                    window.location.pathname = keyHandler[e.keyCode];
+                } else {
+                    window.scrollBy(1, 0);
+                }
+            }
+            else {
+                window.location.pathname = keyHandler[e.keyCode];    
+            }
+            
         }
     }
 }
