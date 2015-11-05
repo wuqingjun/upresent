@@ -42,7 +42,7 @@ namespace fetchleet
                         browser.TextField(Find.ById("id_password")).SetAttributeValue("value", "Test123"); //.TypeText("Test123");
                         browser.Button(Find.ByText("Sign In")).Click();
 
-                        for (int i = 138; i < 300; ++i)
+                        for (int i = 191; i < 300; ++i)
                         {
                             var table = browser.Table(Find.ById("problemList"));
                             var body = table.TableBodies[0];
@@ -107,6 +107,7 @@ namespace fetchleet
 
                                         string questionhtml = questionTemplate.Replace("<%QuestionName%>", questionName).Replace("<%QuestionContent%>", questionContent);
                                         string solutonhtml = solutionTemplate.Replace("<%QuestionName%>", questionName).Replace("<%SolutionTemplate%>", toHtml.TextField(Find.ById("html")).Text);
+                                        solutonhtml = solutonhtml.Replace("margin: 0; line-height: 125%", "margin: 0; line-height: 125%; white-space: pre-wrap;");
 
                                         string solutionFilename = Directory + "output\\" + questionIndex + ".solution.html";
                                         string questionFileName = Directory + "output\\" + questionIndex + ".question.html";

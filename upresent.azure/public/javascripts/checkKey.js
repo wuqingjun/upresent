@@ -4,7 +4,6 @@ var commands = ['q', 's'];
 var pageMapping = { 'q': 0, 's': 1 };
 var fastleet = "fastleet";
 var oldScrollY = 0;
-var oldScrollX = 0;
 
 function max(a, b) { return a >= b ? a : b; }
 function min(a, b) { return a <= b ? a : b; }
@@ -42,18 +41,13 @@ function checkKey(e) {
             
             var keyHandler = { '37': prev, '38': up, '39': next, '40': down };
 
-        
+        var key = parseInt(e.keyCode);
 
-            if (parseInt(e.keyCode) % 2) {
-                window.scrollBy(5, 0);
-               // alert(window.scrollX);
-                if (window.scrollX == oldScrollX) {
-                   window.location.pathname = keyHandler[e.keyCode];
-                }
-                oldScrollX = window.scrollX;
+            if (key % 2) {
+                window.location.pathname = keyHandler[e.keyCode];
             }
             else {
-                window.scrollBy(0, 5);
+                window.scrollBy(0,  (key === 40 ? 1 : -1) * 5);
                 if (window.scrollY == oldScrollY) {
                     window.location.pathname = keyHandler[e.keyCode];
                 }
