@@ -3,6 +3,8 @@ var maxpage = 221;
 var commands = ['q', 's'];
 var pageMapping = { 'q': 0, 's': 1 };
 var fastleet = "fastleet";
+var oldScrollY = 0;
+var oldScrollX = 0;
 
 function max(a, b) { return a >= b ? a : b; }
 function min(a, b) { return a <= b ? a : b; }
@@ -42,24 +44,21 @@ function checkKey(e) {
 
         
 
-            if (e.keyCode == '40') {
-                if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-                    window.location.pathname = keyHandler[e.keyCode];
-                } else {
-                    window.scrollBy(0, 3);    
+            if (parseInt(e.keyCode) % 2) {
+                window.scrollBy(5, 0);
+               // alert(window.scrollX);
+                if (window.scrollX == oldScrollX) {
+                   window.location.pathname = keyHandler[e.keyCode];
                 }
-            }
-            else if (e.keyCode == '39') {
-                if ((window.innerWidth + window.scrollX) >= document.body.offsetWidth) {
-                    window.location.pathname = keyHandler[e.keyCode];
-                } else {
-                    window.scrollBy(1, 0);
-                }
+                oldScrollX = window.scrollX;
             }
             else {
-                window.location.pathname = keyHandler[e.keyCode];    
+                window.scrollBy(0, 5);
+                if (window.scrollY == oldScrollY) {
+                    window.location.pathname = keyHandler[e.keyCode];
+                }
+                oldScrollY = window.scrollY;
             }
-            
         }
     }
 }
