@@ -42,7 +42,7 @@ namespace fetchleet
                         browser.TextField(Find.ById("id_password")).SetAttributeValue("value", "Test123"); //.TypeText("Test123");
                         browser.Button(Find.ByText("Sign In")).Click();
 
-                        for (int i = 191; i < 300; ++i)
+                        for (int i = 108; i < 300; ++i)
                         {
                             var table = browser.Table(Find.ById("problemList"));
                             var body = table.TableBodies[0];
