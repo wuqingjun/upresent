@@ -28,11 +28,11 @@ function checkKey(e) {
         
             if (pagenumber && pagenumber.length > 0) {
                 var temp = (pagenumber - 1 + maxpage) % maxpage;
-                prev = "fastleet/" + temp + "/q";
+                prev = "/fastleet/" + temp + "/q";
                 temp = (parseInt(pagenumber) + 1) % maxpage;
-                next = "fastleet/" + temp + '/q';
-                up = "fastleet/" + pagenumber + '/' + commands[max(pageMapping[cmd] - 1, 0)];
-                down = "fastleet/" + pagenumber + '/' + commands[min(pageMapping[cmd] + 1, commands.length - 1)];           
+                next = "/fastleet/" + temp + '/q';
+                up = "/fastleet/" + pagenumber + '/' + commands[max(pageMapping[cmd] - 1, 0)];
+                down = "/fastleet/" + pagenumber + '/' + commands[min(pageMapping[cmd] + 1, commands.length - 1)];           
             } else {
                 prev = fastleet;
                 next = fastleet + "/1";
@@ -50,7 +50,9 @@ function checkKey(e) {
             else {
                 window.scrollBy(0,  (key === 40 ? 1 : -1) * 5);
                 if (window.scrollY == oldScrollY) {
-                    window.location.pathname = keyHandler[e.keyCode];
+                    if (keyHandler[e.keyCode] !== url) {
+                        window.location.pathname = keyHandler[e.keyCode];        
+                    }
                 }
                 oldScrollY = window.scrollY;
             }
