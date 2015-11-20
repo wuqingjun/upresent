@@ -58,29 +58,33 @@ function checkKey(e) {
     }
 }
 
-$(window).keydown(function(event) {
-    checkKey(event);
-});
+$(function () {
+    $(window).keydown(function (event) {
+        checkKey(event);
+    });
 
-$(window).load(function () {
-    $(window).on("swipeleft", function (event) {
-        var e = $.Event('keydown');
-        e.keyCode = 39;
-        $(window).trigger(e);
-    });
-    $(window).on("swiperight", function (event) {
-        var e = $.Event('keydown');
-        e.keyCode = 37;
-        $(window).trigger(e);
-    });
-    $(window).on("swipeup", function (event) {
-        var e = $.Event('keydown');
-        e.keyCode = 38;
-        $(window).trigger(e);
-    });
-    $(window).on("swipedown", function (event) {
+    $(window).swipe({swipeDown: down, swipeUp: up, swipeLeft: left, swipeRight: right, allowPageScroll: "vertical" });
+    function down(event, direction, distance, duration, fingerCount) {
+            var e = $.Event('keydown');
+            e.keyCode = 38;
+            $(window).trigger(e);
+    }
+
+    function up(event, direction, distance, duration, fingerCount) {
         var e = $.Event('keydown');
         e.keyCode = 40;
         $(window).trigger(e);
-    });
+    }
+
+    function left(event, direction, distance, duration, fingerCount) {
+        var e = $.Event('keydown');
+        e.keyCode = 39;
+        $(window).trigger(e);
+    }
+    
+    function right(event, direction, distance, duration, fingerCount) {
+        var e = $.Event('keydown');
+        e.keyCode = 37;
+        $(window).trigger(e);
+    }
 });
