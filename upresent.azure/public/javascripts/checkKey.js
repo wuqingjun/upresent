@@ -8,6 +8,7 @@ var oldScrollY = 0;
 function max(a, b) { return a >= b ? a : b; }
 function min(a, b) { return a <= b ? a : b; }
 
+
 function checkKey(e) {
     e = e || window.event;
 
@@ -56,3 +57,30 @@ function checkKey(e) {
         }
     }
 }
+
+$(window).keydown(function(event) {
+    checkKey(event);
+});
+
+$(window).load(function () {
+    $(window).on("swipeleft", function (event) {
+        var e = $.Event('keydown');
+        e.keyCode = 39;
+        $(window).trigger(e);
+    });
+    $(window).on("swiperight", function (event) {
+        var e = $.Event('keydown');
+        e.keyCode = 37;
+        $(window).trigger(e);
+    });
+    $(window).on("swipeup", function (event) {
+        var e = $.Event('keydown');
+        e.keyCode = 38;
+        $(window).trigger(e);
+    });
+    $(window).on("swipedown", function (event) {
+        var e = $.Event('keydown');
+        e.keyCode = 40;
+        $(window).trigger(e);
+    });
+});

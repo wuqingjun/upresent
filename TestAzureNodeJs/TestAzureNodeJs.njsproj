@@ -3,15 +3,15 @@
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">11.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
-    <Name>upresent.azure</Name>
-    <RootNamespace>upresent.azure</RootNamespace>
-    <NameOfLastUsedPublishProfile>upresent</NameOfLastUsedPublishProfile>
+    <Name>TestAzureNodeJs</Name>
+    <RootNamespace>TestAzureNodeJs</RootNamespace>
+    <NameOfLastUsedPublishProfile>youpresent</NameOfLastUsedPublishProfile>
   </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>0e6ce786-6575-4d40-932d-ce9cfaf76002</ProjectGuid>
+    <ProjectGuid>8a7eaac1-ab66-4023-a070-3d0aa4aa9203</ProjectGuid>
     <ProjectHome>.</ProjectHome>
     <StartupFile>app.js</StartupFile>
     <SearchPath>
@@ -31,26 +31,21 @@
     <DebugSymbols>true</DebugSymbols>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="public\javascripts\checkKey.js" />
-    <Compile Include="public\javascripts\jquery.touchSwipe.min.js" />
-    <Compile Include="public\javascripts\jquerymobile-swipeupdown.js" />
+    <Compile Include="app.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\users.js" />
     <Compile Include="bin\www" />
-    <Compile Include="app.js" />
-    <Content Include="IISNode.yml" />
     <Content Include="package.json" />
     <Content Include="public\stylesheets\style.styl" />
     <Content Include="README.md" />
-    <None Include="upresent.pubxml" />
     <Content Include="views\index.jade" />
     <Content Include="views\layout.jade" />
     <Content Include="views\error.jade" />
+    <None Include="youpresent.pubxml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="bin\" />
     <Folder Include="public\" />
-    <Folder Include="public\fastleet\" />
     <Folder Include="public\images\" />
     <Folder Include="public\javascripts\" />
     <Folder Include="public\stylesheets\" />

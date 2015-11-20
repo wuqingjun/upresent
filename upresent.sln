@@ -11,6 +11,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fetchleet", "fetchleet\fetc
 EndProject
 Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "upresent.azure", "upresent.azure\upresent.azure.njsproj", "{0E6CE786-6575-4D40-932D-CE9CFAF76002}"
 EndProject
+Project("{9092AA53-FB77-4645-B42D-1CCCA6BD08BD}") = "TestAzureNodeJs", "TestAzureNodeJs\TestAzureNodeJs.njsproj", "{8A7EAAC1-AB66-4023-A070-3D0AA4AA9203}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{0E6CE786-6575-4D40-932D-CE9CFAF76002}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0E6CE786-6575-4D40-932D-CE9CFAF76002}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0E6CE786-6575-4D40-932D-CE9CFAF76002}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8A7EAAC1-AB66-4023-A070-3D0AA4AA9203}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8A7EAAC1-AB66-4023-A070-3D0AA4AA9203}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8A7EAAC1-AB66-4023-A070-3D0AA4AA9203}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8A7EAAC1-AB66-4023-A070-3D0AA4AA9203}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
