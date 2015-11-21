@@ -95,23 +95,4 @@ $(function () {
             }
         }
     }
-    //$(window).swipe({swipeDown: down, swipeUp: up, swipeLeft: left, swipeRight: right, allowPageScroll: "vertical" });
-    function down(event, direction, distance, duration, fingerCount) {
-        swipeDirection = 'down';
-        if (oldScrollY === window.scrollY) {
-
-        }
-    }
-
-    function up(event, direction, distance, duration, fingerCount) {
-        swipeDirection = 'up';
-    }
-
-    function left(event, direction, distance, duration, fingerCount) {
-        swipeDirection = 'left';
-    }
-    
-    function right(event, direction, distance, duration, fingerCount) {
-        swipeDirection = 'right';
-    }
 });
