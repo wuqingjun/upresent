@@ -4,6 +4,7 @@ var commands = ['q', 's'];
 var pageMapping = { 'q': 0, 's': 1 };
 var fastleet = "fastleet";
 var oldScrollY = 0;
+var swipeDirection = '';
 
 function max(a, b) { return a >= b ? a : b; }
 function min(a, b) { return a <= b ? a : b; }
@@ -60,33 +61,57 @@ function checkKey(e) {
     }
 }
 
+function triggerEvent(keyCode){
+    var e = $.Event('keydown');
+    e.keyCode = keyCode;
+    $(window).trigger(e);
+}
+
 $(function () {
     $(window).keydown(function (event) {
         checkKey(event);
     });
 
-    $(window).swipe({swipeDown: down, swipeUp: up, swipeLeft: left, swipeRight: right, allowPageScroll: "vertical" });
+    $(window).swipe({ swipeStatus: status, allowPageScroll: "auto" });
+    function status(event, phase, direction, distance, duration, fingers){
+        if (phase !== 'cancel') {
+            if (direction === 'up') {
+                if (oldScrollY === 0) {
+                    triggerEvent(40);
+                }
+                oldScrollY = window.scrollY;
+            }
+            if (direction === 'down') {
+                if (oldScrollY === window.scrollY) {
+                    triggerEvent(38);
+                }
+                oldScrollY = window.scrollY;
+            }
+            if (direction === 'left') {
+                triggerEvent(39);
+            }
+            if (direction === 'right') {
+                triggerEvent(37);
+            }
+        }
+    }
+    //$(window).swipe({swipeDown: down, swipeUp: up, swipeLeft: left, swipeRight: right, allowPageScroll: "vertical" });
     function down(event, direction, distance, duration, fingerCount) {
-            var e = $.Event('keydown');
-            e.keyCode = 38;
-            $(window).trigger(e);
+        swipeDirection = 'down';
+        if (oldScrollY === window.scrollY) {
+
+        }
     }
 
     function up(event, direction, distance, duration, fingerCount) {
-        var e = $.Event('keydown');
-        e.keyCode = 40;
-        $(window).trigger(e);
+        swipeDirection = 'up';
     }
 
     function left(event, direction, distance, duration, fingerCount) {
-        var e = $.Event('keydown');
-        e.keyCode = 39;
-        $(window).trigger(e);
+        swipeDirection = 'left';
     }
     
     function right(event, direction, distance, duration, fingerCount) {
-        var e = $.Event('keydown');
-        e.keyCode = 37;
-        $(window).trigger(e);
+        swipeDirection = 'right';
     }
 });
