@@ -80,7 +80,7 @@ app.get('/fastleet/:questionid/:command', function (req, res) {
     res.sendFile(questionHtml, { root: __dirname + '/public/fastleet' });
 });
 
-var server = app.listen(8080, function () {
+var server = app.listen(9090, function () {
     var host = server.address().address;
     var port = server.address().port;
     

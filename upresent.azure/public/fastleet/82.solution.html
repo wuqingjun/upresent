@@ -56,42 +56,39 @@
         <h1>
             Remove Duplicates from Sorted List II 
         </h1>
-		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;padding:.1em .3em;"><pre style="margin: 0; line-height: 125%; white-space: pre-wrap;"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span> {
+		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;padding:.1em .3em;"><pre style="margin: 0; line-height: 125%; white-space: pre-wrap;"><span style="color: #888888">/**</span>
+<span style="color: #888888"> * Definition for singly-linked list.</span>
+<span style="color: #888888"> * struct ListNode {</span>
+<span style="color: #888888"> *     int val;</span>
+<span style="color: #888888"> *     ListNode *next;</span>
+<span style="color: #888888"> *     ListNode(int x) : val(x), next(NULL) {}</span>
+<span style="color: #888888"> * };</span>
+<span style="color: #888888"> */</span>
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span> {
 <span style="color: #997700; font-weight: bold">public:</span>
-    <span style="color: #333399; font-weight: bold">bool</span> containsNearbyAlmostDuplicate(vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;&amp;</span> nums, <span style="color: #333399; font-weight: bold">int</span> k, <span style="color: #333399; font-weight: bold">int</span> t) 
+    ListNode <span style="color: #333333">*</span>deleteDuplicates(ListNode <span style="color: #333333">*</span>head) 
     {
-        vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> temp;
-        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> nums.size(); <span style="color: #333333">++</span>i)
+        <span style="color: #008800; font-weight: bold">for</span>(ListNode <span style="color: #333333">*</span>p <span style="color: #333333">=</span> head, <span style="color: #333333">*</span>prev <span style="color: #333333">=</span> <span style="color: #007020">NULL</span>; p; p <span style="color: #333333">=</span> p<span style="color: #333333">-&gt;</span>next)
         {
-            <span style="color: #333399; font-weight: bold">int</span> n <span style="color: #333333">=</span> search(temp, nums[i]);
-            <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> m <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; m <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">2</span>; <span style="color: #333333">++</span>m)
+            <span style="color: #008800; font-weight: bold">if</span>(<span style="color: #333333">!</span>p<span style="color: #333333">-&gt;</span>next <span style="color: #333333">||</span> p<span style="color: #333333">-&gt;</span>val <span style="color: #333333">!=</span> p<span style="color: #333333">-&gt;</span>next<span style="color: #333333">-&gt;</span>val)
             {
-                <span style="color: #008800; font-weight: bold">if</span>(n <span style="color: #333333">-</span> m <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #333333">&amp;&amp;</span> n <span style="color: #333333">-</span> m <span style="color: #333333">&lt;</span> temp.size())
+                <span style="color: #008800; font-weight: bold">if</span>(prev) {prev<span style="color: #333333">-&gt;</span>next <span style="color: #333333">=</span> p;}
+                prev <span style="color: #333333">=</span> p;
+            }
+            <span style="color: #008800; font-weight: bold">else</span>
+            {
+                <span style="color: #008800; font-weight: bold">while</span>(p<span style="color: #333333">-&gt;</span>next <span style="color: #333333">&amp;&amp;</span> p<span style="color: #333333">-&gt;</span>next<span style="color: #333333">-&gt;</span>val <span style="color: #333333">==</span> p<span style="color: #333333">-&gt;</span>val){ p <span style="color: #333333">=</span> p<span style="color: #333333">-&gt;</span>next;}
+                <span style="color: #008800; font-weight: bold">if</span>(prev)
                 {
-                    <span style="color: #333399; font-weight: bold">long</span> <span style="color: #333399; font-weight: bold">long</span> ll <span style="color: #333333">=</span> temp[n <span style="color: #333333">-</span> m];
-                    <span style="color: #008800; font-weight: bold">if</span>(abs(ll <span style="color: #333333">-</span> nums[i]) <span style="color: #333333">&lt;=</span> t) { <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">true</span>; }
+                    prev<span style="color: #333333">-&gt;</span>next <span style="color: #333333">=</span> p<span style="color: #333333">-&gt;</span>next;
                 }
-            }
-            temp.insert(begin(temp) <span style="color: #333333">+</span> n, nums[i]);
-            <span style="color: #008800; font-weight: bold">if</span>(i <span style="color: #333333">&gt;=</span> k)
-            {
-                n <span style="color: #333333">=</span> search(temp, nums[i <span style="color: #333333">-</span> k]);
-                temp.erase(begin(temp) <span style="color: #333333">+</span> n);
+                <span style="color: #008800; font-weight: bold">else</span>
+                {
+                    head <span style="color: #333333">=</span> p<span style="color: #333333">-&gt;</span>next;
+                }                
             }
         }
-        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">false</span>;
-    }
-    <span style="color: #333399; font-weight: bold">int</span> search(vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> <span style="color: #333333">&amp;</span>nums, <span style="color: #333399; font-weight: bold">int</span> t)
-    {
-        <span style="color: #333399; font-weight: bold">int</span> l <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>, h <span style="color: #333333">=</span> nums.size() <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>;
-        <span style="color: #008800; font-weight: bold">while</span>(l <span style="color: #333333">&lt;=</span> h)
-        {
-            <span style="color: #333399; font-weight: bold">int</span> m <span style="color: #333333">=</span> (l <span style="color: #333333">+</span> h) <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>;
-            <span style="color: #008800; font-weight: bold">if</span>(nums[m] <span style="color: #333333">==</span> t) { <span style="color: #008800; font-weight: bold">return</span> m; }
-            <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span>(nums[m] <span style="color: #333333">&lt;</span> t) { l <span style="color: #333333">=</span> m <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>; }
-            <span style="color: #008800; font-weight: bold">else</span> { h <span style="color: #333333">=</span> m <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>; }
-        }
-        <span style="color: #008800; font-weight: bold">return</span> l;
+        <span style="color: #008800; font-weight: bold">return</span> head;
     }
 };
 </pre></div>

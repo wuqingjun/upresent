@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Linq;
 using System.Runtime.InteropServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WatiN.Core;
@@ -42,7 +43,7 @@ namespace fetchleet
                         browser.TextField(Find.ById("id_password")).SetAttributeValue("value", "Test123"); //.TypeText("Test123");
                         browser.Button(Find.ByText("Sign In")).Click();
 
-                        for (int i = 108; i < 300; ++i)
+                        for (int i = 115; i < 300; ++i)
                         {
                             var table = browser.Table(Find.ById("problemList"));
                             var body = table.TableBodies[0];
@@ -73,7 +74,9 @@ namespace fetchleet
                                             questionContent += "<p>" + questionDiv.Paras[j].Text + "</p>";
                                         }
 
-                                        browser.Link(Find.ByText("My Submissions")).Click();
+                                        //browser.Links.SelectMany(l => l.Text == "My Submissions");
+                                        browser.Links.Filter(l => l.Text == "My Submissions").Where(l => l.Url != "https://leetcode.com/submissions/").First().Click();
+                                        //browser.Link(Find.ByText("My Submissions") ).  .Click();
                                         browser.WaitForComplete();
 
                                         var tableResult = browser.Table(Find.ById("result_testcases"));
