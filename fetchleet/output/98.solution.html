@@ -54,10 +54,10 @@
 
     <div style="margin-left:10px;">
         <h1>
-            Binary Tree Right Side View 
+            Validate Binary Search Tree 
         </h1>
 		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;padding:.1em .3em;"><pre style="margin: 0; line-height: 125%; white-space: pre-wrap;"><span style="color: #888888">/**</span>
-<span style="color: #888888"> * Definition for a binary tree node.</span>
+<span style="color: #888888"> * Definition for binary tree</span>
 <span style="color: #888888"> * struct TreeNode {</span>
 <span style="color: #888888"> *     int val;</span>
 <span style="color: #888888"> *     TreeNode *left;</span>
@@ -67,29 +67,19 @@
 <span style="color: #888888"> */</span>
 <span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span> {
 <span style="color: #997700; font-weight: bold">public:</span>
-    vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> rightSideView(TreeNode<span style="color: #333333">*</span> root) 
+    <span style="color: #333399; font-weight: bold">bool</span> isValidBST(TreeNode <span style="color: #333333">*</span>root) 
     {
-        vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> res;
+        TreeNode <span style="color: #333333">*</span>prev <span style="color: #333333">=</span> <span style="color: #007020">NULL</span>;
+        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #0066BB; font-weight: bold">rec</span>(root, prev);
+    }
+    <span style="color: #333399; font-weight: bold">bool</span> rec(TreeNode <span style="color: #333333">*</span>root, TreeNode <span style="color: #333333">*&amp;</span>prev)
+    {
+        <span style="color: #333399; font-weight: bold">bool</span> res <span style="color: #333333">=</span> <span style="color: #007020">true</span>;
         <span style="color: #008800; font-weight: bold">if</span>(root)
         {
-            queue<span style="color: #333333">&lt;</span>TreeNode <span style="color: #333333">*&gt;</span> q[<span style="color: #0000DD; font-weight: bold">2</span>];
-            q[<span style="color: #0000DD; font-weight: bold">0</span>].push(root);
-            <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; <span style="color: #333333">!</span>q[i].empty(); i <span style="color: #333333">=</span> (i <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>) <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span>)
-            {
-                res.push_back(q[i].back()<span style="color: #333333">-&gt;</span>val);
-                <span style="color: #008800; font-weight: bold">while</span>(<span style="color: #333333">!</span>q[i].empty())
-                {
-                    <span style="color: #008800; font-weight: bold">if</span>(q[i].front()<span style="color: #333333">-&gt;</span>left)
-                    {
-                        q[(i <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>) <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span>].push(q[i].front()<span style="color: #333333">-&gt;</span>left);
-                    }
-                    <span style="color: #008800; font-weight: bold">if</span>(q[i].front()<span style="color: #333333">-&gt;</span>right)
-                    {
-                        q[(i <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>) <span style="color: #333333">%</span> <span style="color: #0000DD; font-weight: bold">2</span>].push(q[i].front()<span style="color: #333333">-&gt;</span>right);
-                    }
-                    q[i].pop();
-                }
-            }
+            res <span style="color: #333333">=</span> rec(root<span style="color: #333333">-&gt;</span>left, prev) <span style="color: #333333">&amp;&amp;</span> (<span style="color: #333333">!</span>prev <span style="color: #333333">||</span> prev<span style="color: #333333">-&gt;</span>val <span style="color: #333333">&lt;</span> root<span style="color: #333333">-&gt;</span>val);
+            prev <span style="color: #333333">=</span> root;
+            res <span style="color: #333333">&amp;=</span> rec(root<span style="color: #333333">-&gt;</span>right, prev);
         }
         <span style="color: #008800; font-weight: bold">return</span> res;
     }
