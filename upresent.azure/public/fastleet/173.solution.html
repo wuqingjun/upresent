@@ -56,44 +56,54 @@
         <h1>
             Binary Search Tree Iterator 
         </h1>
-		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;padding:.1em .3em;"><pre style="margin: 0; line-height: 125%; white-space: pre-wrap;"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span> {
+		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;padding:.1em .3em;"><pre style="margin: 0; line-height: 125%; white-space: pre-wrap;"><span style="color: #888888">/**</span>
+<span style="color: #888888"> * Definition for binary tree</span>
+<span style="color: #888888"> * struct TreeNode {</span>
+<span style="color: #888888"> *     int val;</span>
+<span style="color: #888888"> *     TreeNode *left;</span>
+<span style="color: #888888"> *     TreeNode *right;</span>
+<span style="color: #888888"> *     TreeNode(int x) : val(x), left(NULL), right(NULL) {}</span>
+<span style="color: #888888"> * };</span>
+<span style="color: #888888"> */</span>
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">BSTIterator</span> {
+<span style="color: #997700; font-weight: bold">private:</span>
+    stack<span style="color: #333333">&lt;</span>TreeNode <span style="color: #333333">*&gt;</span> st;
 <span style="color: #997700; font-weight: bold">public:</span>
-    <span style="color: #333399; font-weight: bold">bool</span> containsNearbyAlmostDuplicate(vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;&amp;</span> nums, <span style="color: #333399; font-weight: bold">int</span> k, <span style="color: #333399; font-weight: bold">int</span> t) 
+    BSTIterator(TreeNode <span style="color: #333333">*</span>r)
     {
-        vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> temp;
-        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> nums.size(); <span style="color: #333333">++</span>i)
+        <span style="color: #008800; font-weight: bold">while</span>(r)
         {
-            <span style="color: #333399; font-weight: bold">int</span> n <span style="color: #333333">=</span> search(temp, nums[i]);
-            <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> m <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; m <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">2</span>; <span style="color: #333333">++</span>m)
-            {
-                <span style="color: #008800; font-weight: bold">if</span>(n <span style="color: #333333">-</span> m <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #333333">&amp;&amp;</span> n <span style="color: #333333">-</span> m <span style="color: #333333">&lt;</span> temp.size())
-                {
-                    <span style="color: #333399; font-weight: bold">long</span> <span style="color: #333399; font-weight: bold">long</span> ll <span style="color: #333333">=</span> temp[n <span style="color: #333333">-</span> m];
-                    <span style="color: #008800; font-weight: bold">if</span>(abs(ll <span style="color: #333333">-</span> nums[i]) <span style="color: #333333">&lt;=</span> t) { <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">true</span>; }
-                }
-            }
-            temp.insert(begin(temp) <span style="color: #333333">+</span> n, nums[i]);
-            <span style="color: #008800; font-weight: bold">if</span>(i <span style="color: #333333">&gt;=</span> k)
-            {
-                n <span style="color: #333333">=</span> search(temp, nums[i <span style="color: #333333">-</span> k]);
-                temp.erase(begin(temp) <span style="color: #333333">+</span> n);
-            }
+            st.push(r);
+            r <span style="color: #333333">=</span> st.top()<span style="color: #333333">-&gt;</span>left;
         }
-        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">false</span>;
     }
-    <span style="color: #333399; font-weight: bold">int</span> search(vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> <span style="color: #333333">&amp;</span>nums, <span style="color: #333399; font-weight: bold">int</span> t)
+
+    <span style="color: #888888">/** @return whether we have a next smallest number */</span>
+    <span style="color: #333399; font-weight: bold">bool</span> hasNext() 
     {
-        <span style="color: #333399; font-weight: bold">int</span> l <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>, h <span style="color: #333333">=</span> nums.size() <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>;
-        <span style="color: #008800; font-weight: bold">while</span>(l <span style="color: #333333">&lt;=</span> h)
+        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #333333">!</span>st.empty();
+    }
+
+    <span style="color: #888888">/** @return the next smallest number */</span>
+    <span style="color: #333399; font-weight: bold">int</span> next() 
+    {
+        <span style="color: #333399; font-weight: bold">int</span> res <span style="color: #333333">=</span> st.top()<span style="color: #333333">-&gt;</span>val;
+        <span style="color: #008800; font-weight: bold">auto</span> t <span style="color: #333333">=</span> st.top()<span style="color: #333333">-&gt;</span>right;
+        st.pop();
+        <span style="color: #008800; font-weight: bold">while</span>(t)
         {
-            <span style="color: #333399; font-weight: bold">int</span> m <span style="color: #333333">=</span> (l <span style="color: #333333">+</span> h) <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>;
-            <span style="color: #008800; font-weight: bold">if</span>(nums[m] <span style="color: #333333">==</span> t) { <span style="color: #008800; font-weight: bold">return</span> m; }
-            <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span>(nums[m] <span style="color: #333333">&lt;</span> t) { l <span style="color: #333333">=</span> m <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>; }
-            <span style="color: #008800; font-weight: bold">else</span> { h <span style="color: #333333">=</span> m <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>; }
+            st.push(t);
+            t <span style="color: #333333">=</span> st.top()<span style="color: #333333">-&gt;</span>left;
         }
-        <span style="color: #008800; font-weight: bold">return</span> l;
+        <span style="color: #008800; font-weight: bold">return</span> res;
     }
 };
+
+<span style="color: #888888">/**</span>
+<span style="color: #888888"> * Your BSTIterator will be called like this:</span>
+<span style="color: #888888"> * BSTIterator i = BSTIterator(root);</span>
+<span style="color: #888888"> * while (i.hasNext()) cout &lt;&lt; i.next();</span>
+<span style="color: #888888"> */</span>
 </pre></div>
 
    </div>

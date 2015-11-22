@@ -56,42 +56,92 @@
         <h1>
             LRU Cache 
         </h1>
-		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;padding:.1em .3em;"><pre style="margin: 0; line-height: 125%; white-space: pre-wrap;"><span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">Solution</span> {
+		<!-- HTML generated using hilite.me --><div style="background: #ffffff; overflow:auto;width:auto;padding:.1em .3em;"><pre style="margin: 0; line-height: 125%; white-space: pre-wrap;"><span style="color: #008800; font-weight: bold">struct</span> Node
+{
+    Node(<span style="color: #333399; font-weight: bold">int</span> k, <span style="color: #333399; font-weight: bold">int</span> v) <span style="color: #333333">:</span> key(k), val(v), prev(<span style="color: #007020">NULL</span>), next(<span style="color: #007020">NULL</span>) {}
+    <span style="color: #333399; font-weight: bold">int</span> key;
+    <span style="color: #333399; font-weight: bold">int</span> val;
+    Node <span style="color: #333333">*</span>prev;
+    Node <span style="color: #333333">*</span>next;
+};
+
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">DLL</span>
+{
 <span style="color: #997700; font-weight: bold">public:</span>
-    <span style="color: #333399; font-weight: bold">bool</span> containsNearbyAlmostDuplicate(vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;&amp;</span> nums, <span style="color: #333399; font-weight: bold">int</span> k, <span style="color: #333399; font-weight: bold">int</span> t) 
+    Node <span style="color: #333333">*</span> head;
+    Node <span style="color: #333333">*</span> tail;
+<span style="color: #997700; font-weight: bold">public:</span>
+    DLL()
     {
-        vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> temp;
-        <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> i <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; i <span style="color: #333333">&lt;</span> nums.size(); <span style="color: #333333">++</span>i)
-        {
-            <span style="color: #333399; font-weight: bold">int</span> n <span style="color: #333333">=</span> search(temp, nums[i]);
-            <span style="color: #008800; font-weight: bold">for</span>(<span style="color: #333399; font-weight: bold">int</span> m <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>; m <span style="color: #333333">&lt;</span> <span style="color: #0000DD; font-weight: bold">2</span>; <span style="color: #333333">++</span>m)
-            {
-                <span style="color: #008800; font-weight: bold">if</span>(n <span style="color: #333333">-</span> m <span style="color: #333333">&gt;=</span> <span style="color: #0000DD; font-weight: bold">0</span> <span style="color: #333333">&amp;&amp;</span> n <span style="color: #333333">-</span> m <span style="color: #333333">&lt;</span> temp.size())
-                {
-                    <span style="color: #333399; font-weight: bold">long</span> <span style="color: #333399; font-weight: bold">long</span> ll <span style="color: #333333">=</span> temp[n <span style="color: #333333">-</span> m];
-                    <span style="color: #008800; font-weight: bold">if</span>(abs(ll <span style="color: #333333">-</span> nums[i]) <span style="color: #333333">&lt;=</span> t) { <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">true</span>; }
-                }
-            }
-            temp.insert(begin(temp) <span style="color: #333333">+</span> n, nums[i]);
-            <span style="color: #008800; font-weight: bold">if</span>(i <span style="color: #333333">&gt;=</span> k)
-            {
-                n <span style="color: #333333">=</span> search(temp, nums[i <span style="color: #333333">-</span> k]);
-                temp.erase(begin(temp) <span style="color: #333333">+</span> n);
-            }
-        }
-        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #007020">false</span>;
+        head <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> Node(<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>, <span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>);
+        tail <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> Node(<span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>, <span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>);
+        head<span style="color: #333333">-&gt;</span>next <span style="color: #333333">=</span> tail;
+        tail<span style="color: #333333">-&gt;</span>prev <span style="color: #333333">=</span> head;
     }
-    <span style="color: #333399; font-weight: bold">int</span> search(vector<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span><span style="color: #333333">&gt;</span> <span style="color: #333333">&amp;</span>nums, <span style="color: #333399; font-weight: bold">int</span> t)
+    <span style="color: #333399; font-weight: bold">void</span> append(Node <span style="color: #333333">*</span> n)
     {
-        <span style="color: #333399; font-weight: bold">int</span> l <span style="color: #333333">=</span> <span style="color: #0000DD; font-weight: bold">0</span>, h <span style="color: #333333">=</span> nums.size() <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>;
-        <span style="color: #008800; font-weight: bold">while</span>(l <span style="color: #333333">&lt;=</span> h)
+        tail<span style="color: #333333">-&gt;</span>prev<span style="color: #333333">-&gt;</span>next <span style="color: #333333">=</span> n;
+        n<span style="color: #333333">-&gt;</span>prev <span style="color: #333333">=</span> tail<span style="color: #333333">-&gt;</span>prev;
+        n<span style="color: #333333">-&gt;</span>next <span style="color: #333333">=</span> tail;
+        tail<span style="color: #333333">-&gt;</span>prev <span style="color: #333333">=</span> n;
+    }
+    <span style="color: #333399; font-weight: bold">void</span> remove(Node <span style="color: #333333">*</span> n)
+    {
+        n<span style="color: #333333">-&gt;</span>prev<span style="color: #333333">-&gt;</span>next <span style="color: #333333">=</span> n <span style="color: #333333">-&gt;</span>next;
+        n<span style="color: #333333">-&gt;</span>next<span style="color: #333333">-&gt;</span>prev <span style="color: #333333">=</span> n<span style="color: #333333">-&gt;</span>prev;
+    }
+};
+
+<span style="color: #008800; font-weight: bold">class</span> <span style="color: #BB0066; font-weight: bold">LRUCache</span>
+{
+<span style="color: #997700; font-weight: bold">private:</span>
+    <span style="color: #333399; font-weight: bold">int</span> Size;
+    <span style="color: #333399; font-weight: bold">int</span> Count;
+    unordered_map<span style="color: #333333">&lt;</span><span style="color: #333399; font-weight: bold">int</span>, Node <span style="color: #333333">*&gt;</span> mp;
+    DLL dll;
+<span style="color: #997700; font-weight: bold">public:</span>
+    LRUCache(<span style="color: #333399; font-weight: bold">int</span> capacity) <span style="color: #333333">:</span> Size(capacity), Count(<span style="color: #0000DD; font-weight: bold">0</span>)
+    {
+        
+    }
+    
+    <span style="color: #333399; font-weight: bold">int</span> get(<span style="color: #333399; font-weight: bold">int</span> key) 
+    {
+        <span style="color: #008800; font-weight: bold">if</span>(mp.find(key) <span style="color: #333333">!=</span> end(mp))
         {
-            <span style="color: #333399; font-weight: bold">int</span> m <span style="color: #333333">=</span> (l <span style="color: #333333">+</span> h) <span style="color: #333333">/</span> <span style="color: #0000DD; font-weight: bold">2</span>;
-            <span style="color: #008800; font-weight: bold">if</span>(nums[m] <span style="color: #333333">==</span> t) { <span style="color: #008800; font-weight: bold">return</span> m; }
-            <span style="color: #008800; font-weight: bold">else</span> <span style="color: #008800; font-weight: bold">if</span>(nums[m] <span style="color: #333333">&lt;</span> t) { l <span style="color: #333333">=</span> m <span style="color: #333333">+</span> <span style="color: #0000DD; font-weight: bold">1</span>; }
-            <span style="color: #008800; font-weight: bold">else</span> { h <span style="color: #333333">=</span> m <span style="color: #333333">-</span> <span style="color: #0000DD; font-weight: bold">1</span>; }
+            dll.remove(mp[key]);
+            dll.append(mp[key]);
+            <span style="color: #008800; font-weight: bold">return</span> mp[key]<span style="color: #333333">-&gt;</span>val;
         }
-        <span style="color: #008800; font-weight: bold">return</span> l;
+        <span style="color: #008800; font-weight: bold">return</span> <span style="color: #333333">-</span><span style="color: #0000DD; font-weight: bold">1</span>;
+    }
+    
+    <span style="color: #333399; font-weight: bold">void</span> set(<span style="color: #333399; font-weight: bold">int</span> key, <span style="color: #333399; font-weight: bold">int</span> value) 
+    {
+        <span style="color: #008800; font-weight: bold">if</span>(mp.find(key) <span style="color: #333333">!=</span> end(mp))
+        {
+            mp[key]<span style="color: #333333">-&gt;</span>val <span style="color: #333333">=</span> value;
+            dll.remove(mp[key]);
+            dll.append(mp[key]);
+        }
+        <span style="color: #008800; font-weight: bold">else</span>
+        {
+            <span style="color: #008800; font-weight: bold">auto</span> <span style="color: #333333">*</span> p <span style="color: #333333">=</span> <span style="color: #008800; font-weight: bold">new</span> Node(key, value);
+            <span style="color: #008800; font-weight: bold">if</span>(Count <span style="color: #333333">==</span> Size)
+            {
+                <span style="color: #008800; font-weight: bold">auto</span> itr <span style="color: #333333">=</span> mp.find(dll.head<span style="color: #333333">-&gt;</span>next<span style="color: #333333">-&gt;</span>key);
+                mp.erase(itr);
+                dll.remove(dll.head<span style="color: #333333">-&gt;</span>next);
+                dll.append(p);
+                mp[key] <span style="color: #333333">=</span> p;
+            }
+            <span style="color: #008800; font-weight: bold">else</span>
+            {
+                mp[key] <span style="color: #333333">=</span> p;
+                dll.append(p);
+                <span style="color: #333333">++</span>Count;
+            }
+        }
     }
 };
 </pre></div>
