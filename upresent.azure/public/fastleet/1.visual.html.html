@@ -1,0 +1,105 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html" charset="utf-8" />
+    <title>Babylon - Getting Started</title>
+    <script src="http://cdn.babylonjs.com/2-2/babylon.js"></script>
+    <style>
+        html, body {
+            overflow: hidden;
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #renderCanvas {
+            width: 100%;
+            height: 100%;
+            touch-action: none;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="renderCanvas"></canvas>
+    <script>
+        window.addEventListener('DOMContentLoaded', function(){
+            // get the canvas DOM element
+            var canvas = document.getElementById('renderCanvas');
+
+            // load the 3D engine
+            var engine = new BABYLON.Engine(canvas, true);
+
+	    var createArray = function (elements, len, scene, shape, isvertical) {
+	for (var i = 0; i < len; ++i)
+	{
+		var mat = new BABYLON.StandardMaterial("background", scene);
+		var background = null;
+		if (shape == 'disc')
+		{
+			background = BABYLON.Mesh.CreateDisc("background", 0.5, 40, scene, false, 2);
+			background.rotation = new BABYLON.Vector3(Math.PI, 0, 0);
+		}
+		else if(shape == 'square')
+		{
+			background = BABYLON.Mesh.CreatePlane("background", 1, scene, false, 2);
+		}
+		background.material = mat;
+		var tex = new BABYLON.DynamicTexture("dynamic texture", 512, scene, true);
+		background.material.diffuseTexture = tex;
+		background.material.specularColor = new BABYLON.Color3(1, 0, 0);
+		tex.drawText(elements[i], 200, 300, "bold 170px Segoe UI", "white", "#555555");
+		if (isvertical)
+		{
+			background.position.y = i * 1.01;	
+		}
+		else
+		{
+			background.position.x = i * 1.01;
+		}
+		background.outlineColor = new BABYLON.Color3(1, 1, 1, 1);
+	}	
+}
+
+	var elements = [];
+
+	var createScene = function () {
+
+    // This creates a basic Babylon Scene object (non-mesh)
+    var scene = new BABYLON.Scene(engine);
+
+    // This creates and positions a free camera (non-mesh)
+    var camera = new BABYLON.FreeCamera("camera1", new BABYLON.Vector3(0, 0, -10), scene);
+
+    // This targets the camera to scene origin
+  	camera.setTarget(BABYLON.Vector3.Zero());
+
+    // This attaches the camera to the canvas
+    camera.attachControl(canvas, true);
+
+    // This creates a light, aiming 0,1,0 - to the sky (non-mesh)
+    var light = new BABYLON.DirectionalLight("light1", new BABYLON.Vector3(0, 0, 10), scene);
+
+	createArray(elements, elements.length, scene, 'square', false);
+
+	return scene;
+};
+
+            // call the createScene function
+
+            // run the render loop
+	    var count = 0;
+            engine.runRenderLoop(function(){
+            	var scene = createScene();
+		elements.push(count++);
+                scene.render();
+            });
+
+            // the canvas/window resize event handler
+            window.addEventListener('resize', function(){
+                engine.resize();
+            });
+        });
+    </script>
+</body>
+</html>
